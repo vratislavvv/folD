@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,500&display=swap);
 :root {
     --bcgc1-color: #FFE5D5;
     --bcgc2-color: #505050;
@@ -5,4 +6,31 @@
     --logc1-color: #F4C303;
     --logc2-color: #F47C00;
     --logc3-color: #DE2B2B;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+body {
+    background-color: var(--logc3-color);
+    background: linear-gradient(to left, var(--logc1-color), var(--logc3-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 80vh;
+}
+
+.MAINnav {
+    display: flex;
+    background-color: #505050;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    width: 960px;
+    max-width: 100%;
+    max-height: 80px;
 }
