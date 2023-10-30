@@ -22,15 +22,48 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 80vh;
+    height: 25vh;
 }
 
 .MAINnav {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #505050;
     border-radius: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
     width: 960px;
     max-width: 100%;
     max-height: 80px;
+}
+
+.MAINnav_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.MAINnav_logo {
+    flex: 0 0 auto;
+    height: 90px;
+}
+
+.MAINnav_logo img {
+    max-height: 80%;
+    width: auto;
+}
+
+.MAINnav_buttons {
+    display: flex;
+    list-style: none;
+    padding: 0;;
+}
+
+.MAINnav_item {
+    margin-right: 10px;
+}
+
+.MAINnav_link {
+    display: flex;
+    align-items: center;
 }
