@@ -20,14 +20,31 @@
 
     <body>
 
-        <nav class="MAINnavbar">
-            <img src="workspaces/gradeproject/assets/images/Logo.png">
+        <nav class="MAINnav">
+            <div class="MAINnav_logo">
+                <img src="http://127.0.0.1:5500/assets/images/logo.png"">
+            </div>
+            <div class="MAINnav_buttons">
+                <ul class="MAINnav_logged1">
+                    <li class="MAINnav_item"><a class="MAINnav_link" href="#">Dashboard</a></li>
+                    <li class="MAINnav_item"><a class="MAINnav_link" href="#">Expenses</a></li>
+                    <li class="MAINnav_item"><a class="MAINnav_link" href="#">Schemas</a></li>
+                </ul>
+                <ul class="MAINnav_logged2">
+                    <li class="MAINnav_item"><a class="MAINnav_link" href="#">Profile</a></li>
+                    <li class="MAINnav_item"><a class="MAINnav_link" href="#">Settings</a></li>
+                </ul>
+                <ul class="MAINnav_unlogged">
+                    <li class="MAINnav_item"><a class="MAINnav_link" href="#">Login</a></li>
+                    <li class="MAINnav_item"><a class="MAINnav_link" href="#">Register</a></li>
+                </ul>
+            </div>
         </nav>
 
     </body>
 
     <main>
-        {% block main %}{% endblock %   }
+        {% block main %}{% endblock %}
     </main>
 
     <footer>
