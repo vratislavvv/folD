@@ -27,23 +27,24 @@ body {
 
 .MAINnav {
     display: flex;
-    margin: auto;
+    justify-content: space-between;
     width: 80%;
     background-color: #505050;
     border-radius: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
-    max-height: 80px;
-    margin: 0 auto;
+    max-height: 100px;
+    padding: 10px;
 }
 
 .MAINnav_div {
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 .MAINnav_logo {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     width: 74px;
 }
 .MAINnav_logo_object {
@@ -53,10 +54,22 @@ body {
 
 .MAINnav_buttons {
     display: flex;
-    align-items: center;
+    flex: 1;
+    justify-content: space-between;
 }
 
 .MAINnav_logged1 {
     display: flex;
     align-items: center;
+    list-style: none;
+}
+
+.MAINnav_logged2 {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.MAINnav_item {
+    margin-right: 10px;
 }
