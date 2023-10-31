@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,500&display=swap);
 :root {
-    --bcgc1-color: #FFE5D5;
+    --bcgc1-color: #ffe5d5;
     --bcgc2-color: #505050;
 
     --logc1-color: #F4C303;
@@ -27,48 +27,36 @@ body {
 
 .MAINnav {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin: auto;
+    width: 80%;
     background-color: #505050;
     border-radius: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
-    width: 80%;
     max-height: 80px;
     margin: 0 auto;
 }
 
 .MAINnav_div {
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin: auto;
+}
+
+.MAINnav_logo {
+    display: flex;
+    justify-content: flex-end;
+    width: 74px;
+}
+.MAINnav_logo_object {
+    max-width: 100%;
+    width: 64px;
 }
 
 .MAINnav_buttons {
     display: flex;
-    margin-right: 20px;
-    flex-direction: row;
+    align-items: center;
 }
 
-.MAINnav_link {
-    color: var(--bcgc1-color);
-    text-decoration: none;
-    margin-right: 20px;
-}
-
-/*.MAINnav_logo {
-    flex: 0 0 auto;
-    height: 80px;
-    width: auto;
-}
-
-.MAINnav_logo img {
-    max-height: 80%;
-    width: auto;
-}
-
-.MAINnav_buttons {
+.MAINnav_logged1 {
     display: flex;
-    list-style: none;
-    padding: 0;
-}*/
+    align-items: center;
+}
