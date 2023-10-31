@@ -46,6 +46,7 @@ body {
     display: flex;
     justify-content: flex-start;
     width: 74px;
+    margin-left: 10px;
 }
 .MAINnav_logo_object {
     max-width: 100%;
@@ -71,5 +72,6 @@ body {
 }
 
 .MAINnav_item {
+    margin-left: 10px;
     margin-right: 10px;
 }
