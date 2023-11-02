@@ -1,0 +1,8 @@
+[MASTER]
+extension-pkg-whitelist=django
+
+[TYPECHECK]
+ignored-classes=...,View
+
+[REPORTS]
+msg-template=%(line)-4d:%(column)-2d:%(msg_id)-5s:%(msg)-50s
