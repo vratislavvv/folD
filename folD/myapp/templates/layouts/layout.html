@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -10,7 +12,7 @@
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        <link rel="stylesheet" type="text/css" href="/workspaces/gradeproject/folD/myapp/static/styles.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'folD/styles.css'%}">
 
         <title>folD: {% block title %}{% endblock %}</title>
 
