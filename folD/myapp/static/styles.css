@@ -55,6 +55,7 @@ body {
 
 .MAINnav_buttons {
     display: flex;
+    align-items: center;
     flex: 1;
     justify-content: space-between;
 }
