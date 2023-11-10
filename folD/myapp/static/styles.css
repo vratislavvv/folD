@@ -55,9 +55,8 @@ body {
 
 .MAINnav_buttons {
     display: flex;
-    align-items: center;
-    flex: 1;
     justify-content: space-between;
+    align-items: center;
 }
 
 .MAINnav_logged1 {
@@ -70,6 +69,7 @@ body {
     display: flex;
     align-items: center;
     list-style: none;
+    flex-direction: row;
 }
 
 .MAINnav_item {
