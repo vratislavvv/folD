@@ -59,6 +59,16 @@ body {
     align-items: center;
 }
 
+.MAINnav_buttons1 {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.MAINnav_buttons2 {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .MAINnav_logged1 {
     display: flex;
     align-items: center;
