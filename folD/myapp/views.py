@@ -5,8 +5,8 @@ from django.http import HttpResponse
 def home(request):
     return HttpResponse("hello world!")
 
-def template(request):
-    return render(request, "/workspaces/gradeproject/folD/myapp/templates/index.html", {})
-
 def dashboard(request):
     return render(request, "/workspaces/gradeproject/folD/myapp/templates/layouts/layout.html", {})
+
+def login(request):
+    return render(request, "folD/myapp/templates/login.html", {})
