@@ -124,10 +124,6 @@ i:hover::before {
     background: linear-gradient(to left, var(--logc1-color), var(--logc3-color));
 }
 
-.LOGIN_button {
-    
-}
-
 .toggle_btn {
     width: 100%;
     padding: 10px 40px;
@@ -138,3 +134,6 @@ i:hover::before {
     position: relative;
     text-align: center;
 }
+
+
+
