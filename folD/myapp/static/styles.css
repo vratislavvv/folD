@@ -16,13 +16,12 @@
 }
 
 body {
-    background-color: var(--logc3-color);
     background: linear-gradient(to left, var(--logc1-color), var(--logc3-color));
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
-    height: 25vh;
+    height: 100vh;
 }
 
 .MAINnav {
@@ -33,6 +32,7 @@ body {
     border-radius: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
     max-height: 100px;
+    margin-top: -100px;
     padding: 10px;
 }
 
@@ -48,6 +48,7 @@ body {
     width: 74px;
     margin-left: 10px;
 }
+
 .MAINnav_logo_object {
     max-width: 100%;
     width: 64px;
@@ -92,10 +93,48 @@ i:hover::before {
 .LOGIN {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     background-color: #505050;
-    width: 40%;
+    width: 40vh;
+    height: 60vh;
     padding: 30px;
     border-radius: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+.LOGIN_logo {
+    display: flex;
+    justify-content: center;
+    width: 74px;
+    margin-left: 10px;
+}
+
+.LOGIN_logo_object {
+    max-width: 100%;
+    width: 64px;
+}
+
+.LOGIN_buttons {
+    display: flex;
+    width: 80%;
+    margin: 35px auto;
+    border-radius: 30px;
+    position: relative;
+    background: linear-gradient(to left, var(--logc1-color), var(--logc3-color));
+}
+
+.LOGIN_button {
+    
+}
+
+.toggle_btn {
+    width: 100%;
+    padding: 10px 40px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    text-align: center;
 }
