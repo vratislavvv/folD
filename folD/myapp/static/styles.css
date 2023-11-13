@@ -135,5 +135,36 @@ i:hover::before {
     text-align: center;
 }
 
+.LOGIN_forms {
+    display: flex;
+    flex-direction: column;
+    
+}
 
+.LOGIN_loginform {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
 
+.LOGIN_registerform {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.submit_btn {
+    padding: 8px 22px;
+    border-radius: 6px;
+    background: linear-gradient(to left, var(--logc1-color), var(--logc3-color));
+    transition: all 0.2s ease;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.submit_btn:active {
+    transform: scale(0.96);
+    margin-top: 5vh;
+}
