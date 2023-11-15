@@ -115,30 +115,32 @@ i:hover::before {
     width: 64px;
 }
 
-.LOGIN_buttons {
-    display: flex;
-    width: 80%;
-    margin: 35px auto;
-    border-radius: 30px;
-    position: relative;
-    background: linear-gradient(to left, var(--logc1-color), var(--logc3-color));
+.LOGIN_label {
+    width: 100%;
+    height: 40%;
+    display: block;
+    background-color: white;
+    border-radius: 100px;
+    cursor: pointer;
 }
 
-.toggle_btn {
-    width: 100%;
-    padding: 10px 40px;
-    cursor: pointer;
-    background: transparent;
-    border: 0;
-    outline: none;
-    position: relative;
-    text-align: center;
+.LOGIN_checkbox {
+    display: none;
 }
+
+.LOGIN_moving_circle {
+    position: absolute;
+    left: 0px;
+    width: 5%;
+    height: 5%;
+    background-color: black;
+    border-radius: 100px;
+}
+
 
 .LOGIN_forms {
     display: flex;
     flex-direction: column;
-    
 }
 
 .LOGIN_loginform {
