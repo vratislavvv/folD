@@ -101,6 +101,7 @@ i:hover::before {
     height: 60vh;
     padding: 30px;
     border-radius: 30px;
+    margin:0 auto;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
 }
 
@@ -151,6 +152,7 @@ i:hover::before {
     display: flex;
     flex-direction: column;
     width: 100%;
+    max-width: 400px;
 }
 
 .LOGIN_loginform {
@@ -173,18 +175,21 @@ i:hover::before {
     background-color: #b8b8b8;
     border-radius: 100px;
     padding: 0 10px;
+    border: #b8b8b8;
 }
 
 .submit_btn {
     padding: 8px 22px;
     border-radius: 6px;
+    margin-top: 0;
     background: linear-gradient(to left, var(--logc1-color), var(--logc3-color));
     transition: all 0.2s ease;
     border: none;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    position: relative;
 }
 
 .submit_btn:active {
-    transform: scale(0.96);
-    margin-top: 5vh;
+    transform: scale(0.99);
+    margin-top: 5px;
 }
