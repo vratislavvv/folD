@@ -14,6 +14,8 @@
 
         <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
 
+        <script src="{% static 'scripts/togglelogin.js' %}"></script>
+
         <title>folD!</title>
 
     </head>
@@ -27,8 +29,7 @@
             <div class="LOGIN_toggle">
                 <label class="LOGIN_label">
                     <div class="LOGIN_checkboxinput">
-                        <input type="checkbox" class="LOGIN_checkbox">
-
+                        <label for="check" class="LOGIN_label2"></label>
                         <div class="LOGIN_circle_div">
                             <div class="LOGIN_moving_circle"></div>
                         </div>
@@ -37,20 +38,28 @@
             </div>
             <div class="LOGIN_forms">
                 <div class="LOGIN_loginform">
-                    <input type="text" placeholder="Username" class="LOGIN_inputform">
-                    <input type="password" placeholder="Password" class="LOGIN_inputform">
+                    <input type="text" placeholder="Username" class="LOGIN_inputform lgn">
+                    <input type="password" placeholder="Password" class="LOGIN_inputform lgn">
                 </div>
                 <div class="LOGIN_registerform">
-                    <input type="text" placeholder="Create Username" class="LOGIN_inputform">
-                    <input type="password" placeholder="Create Password" class="LOGIN_inputform">
-                    <input type="password" placeholder="Repeat Password" class="LOGIN_inputform">
+                    <input type="text" placeholder="Create Username" class="LOGIN_inputform rgstr">
+                    <input type="password" placeholder="Create Password" class="LOGIN_inputform rgstr">
+                    <input type="password" placeholder="Repeat Password" class="LOGIN_inputform rgstr">
                 </div>
             </div>
-            <div class="LOGIN_submit">
-                <button type="button" class="submit_btn">
-                    Submit
-                </button>
+            <div class="LOGIN_submits">
+                <div class="LOGIN_loginsubmit">
+                    <button type="button" class="submit_btn lgn">
+                        Login
+                    </button>
+                </div>
+                <div class="LOGIN_registersubmit">
+                    <button type="button" class="submit_btn rgstr">
+                        Register
+                    </button>
+                </div>
             </div>
+
         </div>
 
     </body>

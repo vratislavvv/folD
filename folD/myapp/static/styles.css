@@ -136,16 +136,16 @@ i:hover::before {
     padding: 0 10px;
 }
 
-.LOGIN_checkbox {
-    display: none;
-}
-
 .LOGIN_moving_circle {
     width: 20px;
     height: 20px;
     background-color: #505050;
     border-radius: 50%;
     transition: transform 0.3s ease;
+}
+
+.LOGIN_moving_circle.clicked {
+    transform: translateX(1200%);
 }
 
 .LOGIN_forms {
@@ -181,7 +181,7 @@ i:hover::before {
 .submit_btn {
     padding: 8px 22px;
     border-radius: 6px;
-    margin-top: 0;
+    margin-top: 20px;
     background: linear-gradient(to left, var(--logc1-color), var(--logc3-color));
     transition: all 0.2s ease;
     border: none;
@@ -192,4 +192,20 @@ i:hover::before {
 .submit_btn:active {
     transform: scale(0.99);
     margin-top: 5px;
+}
+
+.rgstr {
+    display: none;
+}
+
+.rgstr.on {
+    display: block;
+}
+
+.lgn {
+    display: block;
+}
+
+.lgn.off {
+    display: none;
 }
