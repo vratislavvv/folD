@@ -10,7 +10,7 @@ class User(models.Model):
         return str(self.username)
 
 class Bank(models.Model):
-    user = models.OneToOneField('myapp.User', on_delete=models.CASCADE, related_name='bank_account')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='bank_account')
     balance = models.DecimalField(max_digits=20, decimal_places=2)
 
     def __str__(self):
