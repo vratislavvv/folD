@@ -18,3 +18,4 @@ def login_user(request):
 
     if request.method == "GET":
         return render(request, 'authentification/login.html', {})
+    

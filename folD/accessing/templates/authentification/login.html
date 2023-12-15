@@ -23,6 +23,7 @@
     <body>
 
         <form method="POST" action="http://127.0.0.1:8000/dashboard/">
+            {% csrf_token %}
             <div class="LOGIN">
                 <div class="LOGIN_logo">
                     <img src="{% static 'images/logo.png' %}" class="LOGIN_logo_object">
@@ -50,12 +51,12 @@
                 </div>
                 <div class="LOGIN_submits">
                     <div class="LOGIN_loginsubmit">
-                        <button type="button" class="submit_btn lgn">
+                        <button type="submit" class="submit_btn lgn">
                             Login
                         </button>
                     </div>
                     <div class="LOGIN_registersubmit">
-                        <button type="button" class="submit_btn rgstr">
+                        <button type="submit" class="submit_btn rgstr">
                             Register
                         </button>
                     </div>
