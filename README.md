@@ -1,5 +1,7 @@
 # folD
 TODO:
 LOGIN/REGISTER function
+LOGIN funct
 URLS CHECK
 REDIRECTS
+SETTINGS PAGE due to LOG OUT funct
