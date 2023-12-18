@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Wanna know how much you spend on daily, weekly or monthly basis? folD is the only product you need to know so!">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+
+        <script src="{% static 'scripts/togglelogin.js' %}"></script>
+
+        <title>folD: {% block title %}{% endblock %}</title>
+
+    </head>
+
+    <body>
+
+        {% block content %}
+        {% endblock %}
+
+    </body>
+    
+</html>
