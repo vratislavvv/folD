@@ -110,6 +110,7 @@ i:hover::before {
     justify-content: center;
     width: 74px;
     margin-left: 10px;
+    margin-bottom: 25px;
 }
 
 .LOGIN_logo_object {
@@ -134,18 +135,6 @@ i:hover::before {
     border-radius: 100px;
     cursor: pointer;
     padding: 0 10px;
-}
-
-.LOGIN_moving_circle {
-    width: 20px;
-    height: 20px;
-    background-color: #505050;
-    border-radius: 50%;
-    transition: transform 0.3s ease;
-}
-
-.LOGIN_moving_circle.clicked {
-    transform: translateX(1200%);
 }
 
 .LOGIN_forms {
@@ -194,18 +183,4 @@ i:hover::before {
     margin-top: 5px;
 }
 
-.rgstr {
-    display: none;
-}
-
-.rgstr.on {
-    display: block;
-}
-
-.lgn {
-    display: block;
-}
-
-.lgn.off {
-    display: none;
-}
+/* NEW VERSION COMPATIBLE STYLES */

@@ -7,7 +7,7 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <form method="POST" action="http://127.0.0.1:8000/user/dashboard/">
+    <form method="POST" action="">
         {% csrf_token %}
         {{form|crispy}}
         <div class="LOGIN">
