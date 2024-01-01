@@ -20,6 +20,25 @@ class PlaceType(models.Model):
     place_type = models.CharField(max_length=50)
 
 class BankEvent(models.Model):
+    PLACE_TYPES = (
+        ('Groceries', 'Groceries'),
+        ('Restaurants', 'Restaurants'),
+        ('Hobby', 'Hobby'),
+        ('Investments', 'Investments'),
+        ('Charity', 'Charity'),
+        ('Savings', 'Savings'),
+        ('Travel', 'Travel'),
+        ('Healthcare', 'Healthcare'),
+        ('Culture', 'Culture'),
+        ('Clothing', 'Clothing'),
+        ('Electronics', 'Electronics'),
+        ('', ''),
+        ('', ''),
+        ('', ''),
+        ('', ''),
+        ('', ''),
+    )
+
     bank_id = models.ForeignKey(Bank, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=20, decimal_places=2)
     place = models.CharField(max_length=50)
