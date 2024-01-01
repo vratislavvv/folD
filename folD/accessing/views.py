@@ -6,34 +6,43 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import RegistrationForm
 
 def register_user(request):
-    form = RegistrationForm()
 
-    if request.method == "POST":
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('login')  
+    if request.user.is_authenticated:
+        return redirect('dashboard')
+    
+    else:
+        form = RegistrationForm()
 
-    context = {'form': form}
-    return render(request, "registration/register.html", context)
+        if request.method == "POST":
+            form = RegistrationForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('login')  
+
+        context = {'form': form}
+        return render(request, "registration/register.html", context)
 
 
 def login_user(request):
 
-    if request.method == "POST":
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+    if request.user.is_authenticated:
+        return redirect('dashboard')
 
-        user = authenticate(request, username=username, password = password)
+    else:
+        if request.method == "POST":
+            username = request.POST.get('username')
+            password = request.POST.get('password')
 
-        if user is not None:
-            login(request, user)
-            return redirect('dashboard')
-        else:
-            messages.info(request, 'Incorrect login data.')
+            user = authenticate(request, username=username, password = password)
 
-    context = {}
-    return render(request, "registration/login.html", context)
+            if user is not None:
+                login(request, user)
+                return redirect('dashboard')
+            else:
+                messages.info(request, 'Incorrect login data.')
+
+        context = {}
+        return render(request, "registration/login.html", context)
     
 def logout_user(request): 
     logout(request)
