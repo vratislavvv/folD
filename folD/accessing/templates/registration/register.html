@@ -23,8 +23,12 @@
                 </div>
             </div>
             <div class="REG_alreadyuser">
-                <p>Already have an accout? Login <a href="#">here</a>!</p>
+                Already have an accout? Login <a href="{% url 'login' %}" style="margin-left: 1mm;">here</a>!
             </div>
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+            {{ form.errors }}
             <div class="LOGIN_submits">
                 <div class="LOGIN_registersubmit">
                     <input type="submit" value="Register" class="submit_btn rgstr">
@@ -34,14 +38,3 @@
     </form>
 
 {% endblock %}
-
-{{form.username.label}}
-{{form.username}}
-
-{{form.password1.label}}
-{{form.password1}}
-
-{{form.password2.label}}
-{{form.password2}}
-
-<input type="submit" value="Create User">

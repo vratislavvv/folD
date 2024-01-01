@@ -6,45 +6,31 @@
 
 {% load crispy_forms_tags %}
 {% load static %}
+{% load widget_tweaks %}
 
 {% block content %}
-    <form method="POST" action="http://127.0.0.1:8000/user/dashboard/">
+    <form method="POST" action="">
         {% csrf_token %}
         <div class="LOGIN">
             <div class="LOGIN_logo">
                 <img src="{% static 'images/logo.png' %}" class="LOGIN_logo_object">
             </div>
-            <div class="LOGIN_toggle">
-                <label class="LOGIN_label">
-                    <div class="LOGIN_checkboxinput">
-                        <label for="check" class="LOGIN_label2"></label>
-                        <div class="LOGIN_circle_div">
-                            <div class="LOGIN_moving_circle"></div>
-                        </div>
-                    </div>
-                </label>
-            </div>
             <div class="LOGIN_forms">
                 <div class="LOGIN_loginform">
-                    <input type="text" placeholder="Username" class="LOGIN_inputform lgn" name="LOGIN_username">
-                    <input type="password" placeholder="Password" class="LOGIN_inputform lgn" name="LOGIN_password">
-                </div>
-                <div class="LOGIN_registerform">
-                    <input type="text" placeholder="Create Username" class="LOGIN_inputform rgstr" name="REGISTER_username">
-                    <input type="password" placeholder="Create Password" class="LOGIN_inputform rgstr" name="REGISTER_password">
-                    <input type="password" placeholder="Repeat Password" class="LOGIN_inputform rgstr" name="REGISTER_passwordcheck">
+                    <input type="text" placeholder="Username" class="LOGIN_inputform lgn" name="username">
+                    <input type="password" placeholder="Password" class="LOGIN_inputform lgn" name="password">
                 </div>
             </div>
+            <div class="REG_alreadyuser">
+                Don't have an accout? Create one <a href="{% url 'register' %}" style="margin-left: 1mm;">here</a>!
+            </div>
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+            {{ form.errors }}
             <div class="LOGIN_submits">
                 <div class="LOGIN_loginsubmit">
-                    <button type="button" class="submit_btn lgn">
-                        Login
-                    </button>
-                </div>
-                <div class="LOGIN_registersubmit">
-                    <button type="button" class="submit_btn rgstr">
-                        Register
-                    </button>
+                    <input type="submit" value="Login" class="submit_btn rgstr">
                 </div>
             </div>
         </div>

@@ -97,7 +97,7 @@ i:hover::before {
     justify-content: center;
     align-items: center;
     background-color: #505050;
-    width: 40vh;
+    width: 42vh;
     height: 60vh;
     padding: 30px;
     border-radius: 30px;
@@ -116,13 +116,6 @@ i:hover::before {
 .LOGIN_logo_object {
     max-width: 100%;
     width: 64px;
-}
-
-.LOGIN_toggle {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
 }
 
 .LOGIN_label {  
@@ -184,3 +177,20 @@ i:hover::before {
 }
 
 /* NEW VERSION COMPATIBLE STYLES */
+
+.REG_alreadyuser {
+    display: flex;
+      justify-content: center;
+  align-items: center;
+    width: 100%;
+    height: 25px;
+    background-color: #b8b8b8;
+    border-radius: 100px;
+    padding: 0 10px;
+    border: #b8b8b8;
+    margin-top: 20px;
+}
+
+.REG_alreadyuser_text {
+    align-self: center;
+}

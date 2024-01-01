@@ -1,4 +1,4 @@
-{% extends "/workspaces/gradeproject/folD/myapp/templates/layouts/layout.html" %}
+{% extends "layouts/layout.html" %}
 {% load static %}
 
 {% block title %}
@@ -6,7 +6,11 @@
 {% endblock %}
 
 {% block main %}
-    <form>
-        <h1>SETTINGS</h1>
+<h1>SETTINGS</h1>
+
+    <form method="POST" action="">
+        <a href="{% url 'logout' %}">
+            <i class="fa-solid fa-right-from-bracket"></i>
+        </a>
     </form>
 {% endblock %}

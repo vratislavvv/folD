@@ -12,16 +12,30 @@ def register_user(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('login')  
 
     context = {'form': form}
     return render(request, "registration/register.html", context)
 
 
 def login_user(request):
+
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password = password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('dashboard')
+        else:
+            messages.info(request, 'Incorrect login data.')
+
     context = {}
-    return render(request, "folD/accessing/templates/registration/register.html", context)
+    return render(request, "registration/login.html", context)
     
-def logout_user(request):
+def logout_user(request): 
     logout(request)
     return redirect('login')
     
