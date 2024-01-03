@@ -17,7 +17,7 @@
             </div>
             <div class="LOGIN_forms">
                 <div class="LOGIN_registerform">
-                    {{ form.username|add_class:"LOGIN_inputform rgstr"|attr:"placeholder:Username" }}
+                    {{ form.username|add_class:"LOGIN_inputform rgstr"|attr:"placeholder:Username"|attr:"name:username" }}
                     {{ form.password1|add_class:"LOGIN_inputform rgstr"|attr:"placeholder:Password" }}
                     {{ form.password2|add_class:"LOGIN_inputform rgstr"|attr:"placeholder:Repeat Password" }}
                 </div>

@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 
 from .forms import RegistrationForm
+from myapp.models import Bank
 
 def register_user(request):
 
@@ -15,8 +16,12 @@ def register_user(request):
 
         if request.method == "POST":
             form = RegistrationForm(request.POST)
+            
             if form.is_valid():
-                form.save()
+                user = form.save()
+                bank_append = Bank(username=user.username, balance=0.0)
+                bank_append.save()
+
                 return redirect('login')  
 
         context = {'form': form}
@@ -43,7 +48,8 @@ def login_user(request):
 
         context = {}
         return render(request, "registration/login.html", context)
-    
+
+
 def logout_user(request): 
     logout(request)
     return redirect('login')
