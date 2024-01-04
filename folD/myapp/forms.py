@@ -6,5 +6,9 @@ class BankEventForm(forms.ModelForm):
         model = BankEvent
         fields = ['amount', 'place', 'place_type']
         widgets = {
-            'place_type': forms.Select(choices=BankEvent.PLACE_TYPES),
+            'place_type': forms.Select(attrs={'class': 'EXP_input'}),
         }
+
+    def __init__(self, *args, **kwargs):
+        super(BankEventForm, self).__init__(*args, **kwargs)
+        self.fields['place_type'].choices = [('', 'Select Place Type')] + list(BankEvent.PLACE_TYPES)
