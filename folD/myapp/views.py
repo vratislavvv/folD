@@ -1,5 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
+
+from .models import Bank
+from .forms import BankEventForm
 
 @login_required(login_url='login')
 def dashboard(request):
@@ -11,7 +15,22 @@ def settings(request):
 
 @login_required(login_url='login')
 def add_expense(request):
-    return render(request, "/workspaces/gradeproject/folD/myapp/templates/new_expense.html", {})
+
+    if request.method == "POST":
+        form = BankEventForm(request.POST)
+        
+        if form.is_valid():
+            bank_instance = Bank.objects.get(username=request.user.username)
+            form.instance.bank_id = bank_instance
+            form.instance.time = datetime.now()
+            form.save()
+            return redirect('login')
+
+    else:
+        form = BankEventForm() 
+    
+    context = {'form': form}    
+    return render(request, "/workspaces/gradeproject/folD/myapp/templates/new_expense.html", context)
 
 @login_required(login_url='login')
 def templates(request):
