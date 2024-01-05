@@ -7,12 +7,17 @@
 
 {% block main %}
 
-    <h1>SETTINGS</h1>
-
     <form method="POST" action="">
-        <a href="{% url 'logout' %}">
-            <i class="fa-solid fa-right-from-bracket"></i>
-        </a>
+        <div class="SET_container">
+            <div class="SET_headline">
+                <p class="SET_headline_text">Settings</p>
+            </div>
+            <div class="SET_logout">
+                <a href="{% url 'logout' %}" class="SET_logout_icon">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+            </div>
+        </div>
     </form>
 
 {% endblock %}
