@@ -17,7 +17,11 @@
             </div>
         </div>
         <div class="DAS_expenses">
-            <p>x</p>
+            <ul>
+                {% for item in data %}
+                    <li>{{ item.place }}</li>
+                {% endfor %}
+            </ul>
         </div>
         <div class="DAS_incomes">
             <p>x</p>

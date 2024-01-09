@@ -2,12 +2,18 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 
-from .models import Bank
+from .models import Bank, BankEvent
 from .forms import BankEventForm
 
 @login_required(login_url='login')
 def dashboard(request):
-    return render(request, "/workspaces/gradeproject/folD/myapp/templates/index.html", {})
+
+    curruser = request.user.id
+    print(curruser)
+    data = BankEvent.objects.filter(bank_id=curruser)
+
+    context = {'data': data}
+    return render(request, "/workspaces/gradeproject/folD/myapp/templates/index.html", context)
 
 @login_required(login_url='login')
 def settings(request):
