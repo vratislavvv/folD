@@ -9,7 +9,6 @@ from .forms import BankEventForm
 def dashboard(request):
 
     curruser = request.user.id
-    print(curruser)
     data = BankEvent.objects.filter(bank_id=curruser)
 
     context = {'data': data}
