@@ -4,7 +4,7 @@ from datetime import datetime
         
 class Bank(models.Model):
     username = models.CharField(max_length=32, unique=True, null=True)
-    balance = models.DecimalField(max_digits=20, decimal_places=2)
+    balance = models.DecimalField(max_digits=19, decimal_places=2)
 
     def __str__(self):
         return str(self.username)
