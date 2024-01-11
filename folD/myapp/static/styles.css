@@ -255,17 +255,17 @@ i:hover::before {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
 }
 
-.DAS_expenses_headline {
+.DAS_headline {
     display: flex;
     justify-content: center;
 }
 
-.DAS_expenses_headline_text {
+.DAS_headline_text {
     font-size: large;
     color: black;
     border-radius: 10px;
     padding: 7px;
-    margin-bottom: 2%;
+    margin-bottom: 4%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     background: linear-gradient(to left, var(--logc1-color), var(--logc3-color));
 }
@@ -275,6 +275,7 @@ i:hover::before {
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    /*width: calc(100% - 12px);*/
     height: 40px;
     margin-bottom: 2%;
     background-color: #b8b8b8;
@@ -283,14 +284,13 @@ i:hover::before {
     border: #b8b8b8;
 }
 
-.DAS_expenses_header_text1,
-.DAS_expenses_header_text2 {
+.DAS_header_text {
     font-weight: bold;
 }
 
 .DAS_expenses_data {
     overflow-y: auto;
-    max-height: 87%;
+    max-height: 85%;
 }
 
 .DAS_expenses_data ul {
@@ -333,12 +333,16 @@ i:hover::before {
     display: flex;
     flex-direction: column;
     width: 35%;
-    height: 77vh;
+    gap: 2vh;
+}
+
+.DAS_incomes, .DAS_savings, .DAS_investments {
+    width: 100%;
+    height: 24.33vh;
     background-color: #505050;
     padding: 30px;
     border-radius: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
-    gap: 2vh;
 }
 
 

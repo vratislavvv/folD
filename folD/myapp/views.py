@@ -38,5 +38,5 @@ def add_expense(request):
     return render(request, "/workspaces/gradeproject/folD/myapp/templates/new_expense.html", context)
 
 @login_required(login_url='login')
-def templates(request):
-    return render(request, "/workspaces/gradeproject/folD/myapp/templates/templates.html", {})
+def incomes(request):
+    return render(request, "/workspaces/gradeproject/folD/myapp/templates/incomes.html", {})

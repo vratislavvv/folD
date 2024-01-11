@@ -4,7 +4,7 @@ from datetime import datetime
         
 class Bank(models.Model):
     username = models.CharField(max_length=32, unique=True, null=True)
-    balance = models.DecimalField(max_digits=19, decimal_places=2)
+    balance = models.DecimalField(max_digits=20, decimal_places=2)
 
     def __str__(self):
         return str(self.username)
@@ -44,3 +44,19 @@ class BankEvent(models.Model):
 
     def __str__(self):
         return f"{self.amount} at {self.place} ({self.place_type}) on {self.time}"
+
+class Income(models.Model):
+    bank_id = models.ForeignKey(Bank, on_delete=models.CASCADE)
+    place = models.CharField(max_length=100)
+    amount = models.DecimalField(max_digits=20, decimal_places=2)
+
+class Savings(models.Model):
+    bank_id = models.ForeignKey(Bank, on_delete=models.CASCADE)
+    place = models.CharField(max_length=100)
+    amount = models.DecimalField(max_digits=20, decimal_places=2)
+
+class Investments(models.Model):
+    bank_id = models.ForeignKey(Bank, on_delete=models.CASCADE)
+    place = models.CharField(max_length=100)
+    amount = models.DecimalField(max_digits=20, decimal_places=2)
+
