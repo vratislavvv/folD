@@ -11,16 +11,18 @@
 
     <form method="POST" action="">
         {% csrf_token %}
-        <div class="EXP_headline">
-            <p class="EXP_headline_text">Add expense</p>
-        </div>
         <div class="EXP_container">
-            <div class="EXP_forms">
-                {{ form.amount|add_class:"EXP_input"|attr:"placeholder:Amount" }}
-                {{ form.place|add_class:"EXP_input"|attr:"placeholder:Place" }}
-                {{ form.place_type|add_class:"EXP_input"|attr:"placeholder:Place type" }}
+            <div class="EXP_headline">
+                <p class="EXP_headline_text">Add expense</p>
             </div>
-            <input type="submit" value="Add" class="EXP_button">
+            <div class="EXP_main">
+                <div class="EXP_forms">
+                    {{ form.amount|add_class:"EXP_input"|attr:"placeholder:Amount" }}
+                    {{ form.place|add_class:"EXP_input"|attr:"placeholder:Place" }}
+                    {{ form.place_type|add_class:"EXP_input"|attr:"placeholder:Place type" }}
+                </div>
+                <input type="submit" value="Add" class="EXP_button">
+            </div>
         </div>
     </form>
 

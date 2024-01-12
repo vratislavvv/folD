@@ -5,6 +5,63 @@
     Incomes
 {% endblock %}
 
+{% load widget_tweaks %}
+
 {% block main %}
-    <h1>Incomes</h1>
+    
+        <div class="INC_container">
+            <div class="INC_inc">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <div class="INC_incform">
+                        <div class="INC_incform_headline">
+                            <p class="INC_incform_headline_text">Add income</p>
+                        </div>
+                        <div class="INC_incform_main">
+                            <div class="INC_incform_forms">
+                                {{ AddIncomeForm.place|add_class:"INC_incform_input"|attr:"placeholder:Place" }}
+                                {{ AddIncomeForm.amount|add_class:"INC_incform_input"|attr:"placeholder:Amount" }}
+                                {{ AddIncomeForm.wageday|add_class:"INC_incform_input"|attr:"placeholder:Wage day" }}
+                            </div>
+                            <input type="submit" value="Add" class="INC_incform_submitbutton">                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="INC_sav">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <div class="INC_savform">
+                        <div class="INC_savform_headline">
+                            <p class="INC_savform_headline_text">Add Savings</p>
+                        </div>
+                        <div class="INC_savform_main">
+                            <div class="INC_savform_forms">
+                                {{ AddSavingForm.place|add_class:"INC_incform_input"|attr:"placeholder:Place" }}
+                                {{ AddSavingForm.amount|add_class:"INC_incform_input"|attr:"placeholder:Amount" }}                            </div>
+                            <input type="submit" value="Add" class="INC_savform_submitbutton">                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="INC_inv">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <div class="INC_invform">
+                        <div class="INC_invform_headline">
+                            <p class="INC_invform_headline_text">Add Investments</p>
+                        </div>
+                        <div class="INC_invform_main">
+                            <div class="INC_invform_forms">
+                                {{ AddInvestmentForm.place|add_class:"INC_incform_input"|attr:"placeholder:Place" }}
+                                {{ AddInvestmentForm.amount|add_class:"INC_incform_input"|attr:"placeholder:Amount" }}
+                                {{ AddInvestmentForm.interest|add_class:"INC_incform_input"|attr:"placeholder:Interest" }}
+                            </div>
+                            <input type="submit" value="Add" class="INC_invform_submitbutton">                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
 {% endblock %}

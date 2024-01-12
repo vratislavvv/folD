@@ -39,4 +39,12 @@ def add_expense(request):
 
 @login_required(login_url='login')
 def incomes(request):
-    return render(request, "/workspaces/gradeproject/folD/myapp/templates/incomes.html", {})
+
+    if request.method == "POST":
+        pass
+
+    else:
+        pass
+
+    context = {'form': form}
+    return render(request, "/workspaces/gradeproject/folD/myapp/templates/incomes.html", context)

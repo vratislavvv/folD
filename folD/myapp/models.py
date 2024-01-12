@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
+from django.core.validators import MinValueValidator, MaxValueValidator
+
         
 class Bank(models.Model):
     username = models.CharField(max_length=32, unique=True, null=True)
@@ -49,6 +51,12 @@ class Income(models.Model):
     bank_id = models.ForeignKey(Bank, on_delete=models.CASCADE)
     place = models.CharField(max_length=100)
     amount = models.DecimalField(max_digits=20, decimal_places=2)
+    wageday = models.IntegerField(
+        validators=[
+            MinValueValidator(limit_value=1),
+            MaxValueValidator(limit_value=31),
+        ]
+    )
 
 class Savings(models.Model):
     bank_id = models.ForeignKey(Bank, on_delete=models.CASCADE)

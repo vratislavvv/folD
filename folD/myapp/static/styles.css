@@ -37,11 +37,12 @@ footer {
     display: flex;
     position: fixed;
     justify-content: space-between;
-    width: 80%;
+    width: 93.5%;
+    min-width: 350px;
     background-color: #505050;
     border-radius: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
-    max-height: 100px;
+    height: 10vh;
     top: 40px;
     padding: 10px;
 }
@@ -345,6 +346,31 @@ i:hover::before {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
 }
 
+@media screen and (max-width: 1200px) {
+    .DAS_container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .DAS_status {
+        width: 100%;
+        margin-top: 162vh;
+    }
+
+    .DAS_expenses {
+        width: 100%;
+    }
+
+    .DAS_ISI {
+        width: 100%;
+    }
+
+    .DAS_expenses_data {
+        max-height: 60%;
+    }
+}
+
 
 /* ADD EXPENSE PAGE */
 
@@ -354,7 +380,9 @@ i:hover::before {
     justify-content: center;
     align-items: center;
     background-color: #505050;
-    width: 47vh;
+    width: 25%;
+    min-width: 350px;
+    max-width: 500px;
     height: 10vh;
     padding: 30px;
     border-radius: 30px;
@@ -372,13 +400,15 @@ i:hover::before {
     background: linear-gradient(to left, var(--logc1-color), var(--logc3-color));
 }
 
-.EXP_container {
+.EXP_main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #505050;
-    width: 47vh;
+    width: 25%;
+    min-width: 350px;
+    max-width: 500px;
     height: 35vh;
     padding: 30px;
     border-radius: 30px;
@@ -391,13 +421,13 @@ i:hover::before {
     display: flex;
     align-items: center;
     flex-direction: column;
+    width: 100%;
     gap: 25px;
 }
 
 .EXP_input {
     width: 100%;
     height: 40px;
-    width: 350px;
     background-color: #b8b8b8;
     border-radius: 100px;
     padding: 0 10px;
@@ -415,6 +445,8 @@ i:hover::before {
     position: relative;
 }
 
+/* ADD INC PAGE */
+
 /* SETTINGS PAGE */
 
 .SET_container {
@@ -430,10 +462,11 @@ i:hover::before {
     justify-content: center;
     align-items: center;
     background-color: #505050;
-    width: 80%;
+    width: 25%;
+    min-width: 350px;
+    max-width: 500px;
     height: 10vh;
     padding: 10px;
-    
     border-radius: 30px;
     margin:0 auto;
     margin-top: 10vh;
@@ -441,8 +474,9 @@ i:hover::before {
 }
 
 .SET_headline_text {
-    font-size: x-large;
+    font-size: 150%;
     color: black;
+    height: 60%;
     border-radius: 10px;
     padding: 7px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -452,7 +486,9 @@ i:hover::before {
 .SET_logout {
     display: flex;
     justify-content: center;
-    width: 80%;
+    width: 80.5%;
+    min-width: 350px;
+    max-width: 500px;
     padding: 8px 22px;
     border-radius: 6px;
     margin-top: 25px;
