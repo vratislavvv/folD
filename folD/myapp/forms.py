@@ -1,5 +1,5 @@
 from django import forms
-from .models import BankEvent, Income, Saving
+from .models import BankEvent, Income, Saving, Investment
 
 class BankEventForm(forms.ModelForm):
     class Meta:
@@ -31,3 +31,14 @@ class AddSavingForm(forms.ModelForm):
             'amount2': forms.NumberInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Amount'}),
             'place2': forms.TextInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Place'}),
         }
+
+class AddInvestmentForm(forms.ModelForm):
+    class Meta:
+        model = Investment
+        fields = ['amount3', 'place3', 'interest']
+        widgets = {
+            'amount3': forms.NumberInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Amount'}),
+            'place3': forms.TextInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Place'}),
+            'interest': forms.NumberInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Interest'}),
+        }
+

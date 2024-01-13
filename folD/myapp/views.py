@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from datetime import datetime
 
 from .models import Bank, BankEvent, Income
-from .forms import BankEventForm, AddIncomeForm, AddSavingForm
+from .forms import BankEventForm, AddIncomeForm, AddSavingForm, AddInvestmentForm
 
 @login_required(login_url='login')
 def dashboard(request):
@@ -44,9 +44,10 @@ def incomes(request):
     if request.method == "POST":
         form1 = AddIncomeForm(request.POST)
         form2 = AddSavingForm(request.POST)
+        form3 = AddInvestmentForm(request.POST)
         bank_instance = Bank.objects.get(username=request.user.username)
 
-        forms = [form1, form2]
+        forms = [form1, form2, form3]
 
         for form in forms:
             if form.is_valid():
@@ -58,6 +59,7 @@ def incomes(request):
     else:
         form1 = AddIncomeForm()
         form2 = AddSavingForm()
+        form3 = AddInvestmentForm()
 
-    context = {'form1': form1, 'form2': form2}
+    context = {'form1': form1, 'form2': form2, 'form3': form3}
     return render(request, "/workspaces/gradeproject/folD/myapp/templates/incomes.html", context)

@@ -65,3 +65,9 @@ class Saving(models.Model):
     bank_id = models.ForeignKey(Bank, on_delete=models.CASCADE)
     place2 = models.CharField(max_length=100)
     amount2 = models.DecimalField(max_digits=20, decimal_places=2)
+
+class Investment(models.Model):
+    bank_id = models.ForeignKey(Bank, on_delete=models.CASCADE)
+    place3 = models.CharField(max_length=100)
+    amount3 = models.DecimalField(max_digits=20, decimal_places=2)
+    interest = models.DecimalField(max_digits=20, decimal_places=2)

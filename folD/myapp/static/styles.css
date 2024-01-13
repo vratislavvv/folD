@@ -239,6 +239,8 @@ i:hover::before {
 }
 
 .DAS_stage {
+    display: flex;
+    
     width: 100%;
     height: 8.5vh;
     background-color: #505050;
@@ -337,7 +339,7 @@ i:hover::before {
     gap: 2vh;
 }
 
-.DAS_incomes, .DAS_savings, .DAS_investments {
+.DAS_incomes, .DAS_savings {
     width: 100%;
     height: 37.5vh;
     background-color: #505050;

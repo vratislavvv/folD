@@ -13,7 +13,22 @@
                 <p>x</p>
             </div>
             <div class="DAS_stage">
-                <p>x</p>
+                <ul>
+                    <div class="x">
+                        {% if expenses %}
+                            <li>Expenses: ${{ item.place1 }}</li>
+                        {% else %}
+                            <li>Expenses: None</li>
+                        {% endif %}
+                    </div> 
+                    <div class="x">
+                        {% if expenses %}
+                            <li>Balance: ${{ item.place1 }}</li>
+                        {% else %}
+                            <li>Balance: None</li>
+                        {% endif %}
+                    </div> 
+                </ul>
             </div>
         </div>
         <div class="DAS_expenses">
@@ -33,7 +48,7 @@
                     {% for item in expenses %}
                         <div class="DAS_expenses_data_item">
                             <li>{{ item.place }}</li>
-                            <li>-{{ item.amount }}$</li>
+                            <li>-${{ item.amount }}</li>
                         </div>
                     {% endfor %}
                 </ul>
@@ -57,7 +72,7 @@
                         {% for item in incomes %}
                             <div class="DAS_expenses_data_item">
                                 <li>{{ item.place1 }}</li>
-                                <li>+{{ item.amount1 }}$</li>
+                                <li>+${{ item.amount1 }}</li>
                             </div>
                         {% endfor %}
                     </ul>
@@ -65,15 +80,41 @@
             </div>
             <div class="DAS_savings">
                 <div class="DAS_headline">
-                    <p class="DAS_headline_text">Savings</p>
+                    <p class="DAS_headline_text">Savings & Investments</p>
                 </div>
                 <div class="DAS_expenses_header">
                     <div class="DAS_expenses_header_textdiv">
-                        <p class="DAS_header_text">Place</p>
+                        <p class="DAS_header_text">Type</p>
                     </div>
                     <div class="DAS_expenses_header_textdiv">
                         <p class="DAS_header_text">Amount</p>
                     </div>
+                </div>
+                <div class="DAS_expenses_data">
+                    <ul>
+                        {% if amount %}
+                            <div class="DAS_expenses_data_item">
+                                <li>Money saved:</li>
+                                <li>${{ item.place1 }}</li>
+                            </div>
+                        {% else %}
+                            <div class="DAS_expenses_data_item">
+                                <li>Money saved:</li>
+                                <li>None</li>
+                            </div>    
+                        {% endif %}
+                        {% if invested %}
+                        <div class="DAS_expenses_data_item">
+                            <li>Money invested:</li>
+                            <li>${{ item.amount1 }}</li>
+                        </div>                        
+                        {% else %}
+                        <div class="DAS_expenses_data_item">
+                            <li>Money invested:</li>
+                            <li>None</li>
+                        </div>   
+                        {% endif %}
+                    </ul>
                 </div>
             </div>
         </div>
