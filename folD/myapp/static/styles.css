@@ -447,6 +447,18 @@ i:hover::before {
 
 /* ADD INC PAGE */
 
+.INC_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.INC_form_forms {
+    display: flex;
+    flex-direction: column;
+}
+
 /* SETTINGS PAGE */
 
 .SET_container {
