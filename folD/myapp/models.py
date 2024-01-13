@@ -49,8 +49,8 @@ class BankEvent(models.Model):
 
 class Income(models.Model):
     bank_id = models.ForeignKey(Bank, on_delete=models.CASCADE)
-    place = models.CharField(max_length=100)
-    amount = models.DecimalField(max_digits=20, decimal_places=2)
+    place1 = models.CharField(max_length=100)
+    amount1 = models.DecimalField(max_digits=20, decimal_places=2)
     wageday = models.IntegerField(
         validators=[
             MinValueValidator(limit_value=1),
@@ -58,13 +58,10 @@ class Income(models.Model):
         ]
     )
 
-class Savings(models.Model):
-    bank_id = models.ForeignKey(Bank, on_delete=models.CASCADE)
-    place = models.CharField(max_length=100)
-    amount = models.DecimalField(max_digits=20, decimal_places=2)
+    def __str__(self):
+        return f"+{self.amount1}$ from {self.place1} on {self.wageday}."
 
-class Investments(models.Model):
+class Saving(models.Model):
     bank_id = models.ForeignKey(Bank, on_delete=models.CASCADE)
-    place = models.CharField(max_length=100)
-    amount = models.DecimalField(max_digits=20, decimal_places=2)
-    interest = models.DecimalField(max_digits=20, decimal_places=2)
+    place2 = models.CharField(max_length=100)
+    amount2 = models.DecimalField(max_digits=20, decimal_places=2)

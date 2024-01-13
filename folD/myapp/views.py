@@ -2,16 +2,17 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 
-from .models import Bank, BankEvent
-from .forms import BankEventForm, AddIncomeForm, AddSavingForm, AddInvestmentForm
+from .models import Bank, BankEvent, Income
+from .forms import BankEventForm, AddIncomeForm, AddSavingForm
 
 @login_required(login_url='login')
 def dashboard(request):
 
     curruser = request.user.id
-    data = BankEvent.objects.filter(bank_id=curruser)
+    expenses = BankEvent.objects.filter(bank_id=curruser)
+    incomes = Income.objects.filter(bank_id=curruser)
 
-    context = {'data': data}
+    context = {'expenses': expenses, 'incomes': incomes}
     return render(request, "/workspaces/gradeproject/folD/myapp/templates/index.html", context)
 
 @login_required(login_url='login')
@@ -43,10 +44,9 @@ def incomes(request):
     if request.method == "POST":
         form1 = AddIncomeForm(request.POST)
         form2 = AddSavingForm(request.POST)
-        form3 = AddInvestmentForm(request.POST)
         bank_instance = Bank.objects.get(username=request.user.username)
 
-        forms = [form1, form2, form3]
+        forms = [form1, form2]
 
         for form in forms:
             if form.is_valid():
@@ -58,7 +58,6 @@ def incomes(request):
     else:
         form1 = AddIncomeForm()
         form2 = AddSavingForm()
-        form3 = AddInvestmentForm()
 
-    context = {'form1': form1, 'form2': form2, 'form3': form3}
+    context = {'form1': form1, 'form2': form2}
     return render(request, "/workspaces/gradeproject/folD/myapp/templates/incomes.html", context)

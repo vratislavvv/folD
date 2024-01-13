@@ -1,5 +1,5 @@
 from django import forms
-from .models import BankEvent, Income, Savings, Investments
+from .models import BankEvent, Income, Saving
 
 class BankEventForm(forms.ModelForm):
     class Meta:
@@ -16,29 +16,18 @@ class BankEventForm(forms.ModelForm):
 class AddIncomeForm(forms.ModelForm):
     class Meta:
         model = Income
-        fields = ['amount', 'place', 'wageday']
+        fields = ['amount1', 'place1', 'wageday']
         widgets = {
-            'amount': forms.NumberInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Amount'}),
-            'place': forms.TextInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Place'}),
+            'amount1': forms.NumberInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Amount'}),
+            'place1': forms.TextInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Place'}),
             'wageday': forms.NumberInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Wage day'}),
         }
 
 class AddSavingForm(forms.ModelForm):
     class Meta:
-        model = Savings
-        fields = ['amount', 'place']
+        model = Saving
+        fields = ['amount2', 'place2']
         widgets = {
-            'amount': forms.NumberInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Amount'}),
-            'place': forms.TextInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Place'}),
+            'amount2': forms.NumberInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Amount'}),
+            'place2': forms.TextInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Place'}),
         }
-
-class AddInvestmentForm(forms.ModelForm):
-    class Meta:
-        model = Investments
-        fields = ['amount', 'place', 'interest']
-        widgets = {
-            'amount': forms.NumberInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Amount'}),
-            'place': forms.TextInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Place'}),
-            'interest': forms.NumberInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Interest'}),
-        }
-

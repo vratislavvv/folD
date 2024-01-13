@@ -30,7 +30,7 @@
             </div>
             <div class="DAS_expenses_data">
                 <ul>
-                    {% for item in data %}
+                    {% for item in expenses %}
                         <div class="DAS_expenses_data_item">
                             <li>{{ item.place }}</li>
                             <li>-{{ item.amount }}$</li>
@@ -52,6 +52,16 @@
                         <p class="DAS_header_text">Amount</p>
                     </div>
                 </div>
+                <div class="DAS_expenses_data">
+                    <ul>
+                        {% for item in incomes %}
+                            <div class="DAS_expenses_data_item">
+                                <li>{{ item.place1 }}</li>
+                                <li>+{{ item.amount1 }}$</li>
+                            </div>
+                        {% endfor %}
+                    </ul>
+                </div> 
             </div>
             <div class="DAS_savings">
                 <div class="DAS_headline">
@@ -63,22 +73,6 @@
                     </div>
                     <div class="DAS_expenses_header_textdiv">
                         <p class="DAS_header_text">Amount</p>
-                    </div>
-                </div>
-            </div>
-            <div class="DAS_investments">
-                <div class="DAS_headline">
-                    <p class="DAS_headline_text">Investments</p>
-                </div>
-                <div class="DAS_expenses_header">
-                    <div class="DAS_expenses_header_textdiv">
-                        <p class="DAS_header_text">Place</p>
-                    </div>
-                    <div class="DAS_expenses_header_textdiv">
-                        <p class="DAS_header_text">Amount</p>
-                    </div>
-                    <div class="DAS_expenses_header_textdiv">
-                        <p class="DAS_header_text">Interest</p>
                     </div>
                 </div>
             </div>

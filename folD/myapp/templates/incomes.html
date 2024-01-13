@@ -10,7 +10,7 @@
     
         <div class="INC_container">
             <div class="INC_bar">
-                <form method="POST" action="">
+                <form method="POST" action="" class="INC_postform">
                     {% csrf_token %}
                     <div class="INC_form">
                         <div class="INC_form_headline">
@@ -18,8 +18,8 @@
                         </div>
                         <div class="INC_form_main">
                             <div class="INC_form_forms">
-                                {{ form1.place }}
-                                {{ form1.amount }}
+                                {{ form1.place1 }}
+                                {{ form1.amount1 }}
                                 {{ form1.wageday }}
                             </div>
                             <input type="submit" value="Add" class="INC_form_submitbutton">                            
@@ -28,34 +28,16 @@
                 </form>
             </div>
             <div class="INC_bar">
-                <form method="POST" action="">
+                <form method="POST" action="" class="INC_postform">
                     {% csrf_token %}
                     <div class="INC_form">
                         <div class="INC_form_headline">
-                            <p class="INC_form_headline_text">Add Savings</p>
+                            <p class="INC_form_headline_text">Add savings</p>
                         </div>
                         <div class="INC_form_main">
                             <div class="INC_form_forms">
-                                {{ form2.place }}
-                                {{ form2.amount }}
-                            </div>
-                            <input type="submit" value="Add" class="INC_form_submitbutton">                            
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="INC_bar">
-                <form method="POST" action="">
-                    {% csrf_token %}
-                    <div class="INC_form">
-                        <div class="INC_form_headline">
-                            <p class="INC_invform_headline_text">Add Investments</p>
-                        </div>
-                        <div class="INC_form_main">
-                            <div class="INC_form_forms">
-                                {{ form3.place }}
-                                {{ form3.amount }}
-                                {{ form3.interest }}
+                                {{ form2.place2 }}
+                                {{ form2.amount2 }}
                             </div>
                             <input type="submit" value="Add" class="INC_form_submitbutton">                            
                         </div>

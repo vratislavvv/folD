@@ -5,3 +5,5 @@ from .models import *
 
 admin.site.register(Bank)
 admin.site.register(BankEvent)
+admin.site.register(Income)
+admin.site.register(Saving)
