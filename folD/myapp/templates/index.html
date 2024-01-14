@@ -13,19 +13,23 @@
                 <p>x</p>
             </div>
             <div class="DAS_stage">
-                <ul>
-                    <div class="x">
-                        {% if expenses %}
-                            <li>Expenses: ${{ item.place1 }}</li>
+                <ul class="DAS_ul">
+                    <div class="DAS_stage_part">
+                        {% if expensessum %}
+                            <li>Expenses: </li>
+                            <li>${{ expensessum }}</li>
                         {% else %}
-                            <li>Expenses: None</li>
+                            <li>Expenses: </li>
+                            <li>None</li>
                         {% endif %}
                     </div> 
-                    <div class="x">
-                        {% if expenses %}
-                            <li>Balance: ${{ item.place1 }}</li>
+                    <div class="DAS_stage_part">
+                        {% if balance %}
+                            <li>Balance: </li>
+                            <li> ${{ balance }}</li>
                         {% else %}
-                            <li>Balance: None</li>
+                            <li>Balance: </li>
+                            <li>None</li>
                         {% endif %}
                     </div> 
                 </ul>
@@ -92,10 +96,10 @@
                 </div>
                 <div class="DAS_expenses_data">
                     <ul>
-                        {% if amount %}
+                        {% if saved %}
                             <div class="DAS_expenses_data_item">
                                 <li>Money saved:</li>
-                                <li>${{ item.place1 }}</li>
+                                <li>${{ saved }}</li>
                             </div>
                         {% else %}
                             <div class="DAS_expenses_data_item">
@@ -106,7 +110,7 @@
                         {% if invested %}
                         <div class="DAS_expenses_data_item">
                             <li>Money invested:</li>
-                            <li>${{ item.amount1 }}</li>
+                            <li>${{ invested }}</li>
                         </div>                        
                         {% else %}
                         <div class="DAS_expenses_data_item">

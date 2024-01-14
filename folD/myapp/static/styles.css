@@ -9,6 +9,31 @@
     --logc3-color: #DE2B2B;
 }
 
+@media screen and (max-width: 1200px) {
+    .DAS_container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .DAS_status {
+        width: 100%;
+        margin-top: 162vh;
+    }
+
+    .DAS_expenses {
+        width: 100%;
+    }
+
+    .DAS_ISI {
+        width: 100%;
+    }
+
+    .DAS_expenses_data {
+        max-height: 60%;
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -231,7 +256,7 @@ i:hover::before {
 
 .DAS_graph {
     width: 100%;
-    height: 66.5vh;
+    height: 64vh;
     background-color: #505050;
     padding: 30px;
     border-radius: 30px;
@@ -240,13 +265,33 @@ i:hover::before {
 
 .DAS_stage {
     display: flex;
-    
+    align-items: center;
     width: 100%;
-    height: 8.5vh;
+    height: 11vh;
     background-color: #505050;
     padding: 30px;
     border-radius: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+.DAS_ul {
+    display: flex;
+    list-style-type: none;
+    width: 100%;
+    gap: 20px;
+}
+
+.DAS_stage_part {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    height: 40px;
+    margin-bottom: 1%;
+    background-color: #b8b8b8;
+    border-radius: 100px;
+    padding: 0 10px;
+    border: #b8b8b8;    
 }
 
 .DAS_expenses {
@@ -347,32 +392,6 @@ i:hover::before {
     border-radius: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
 }
-
-@media screen and (max-width: 1200px) {
-    .DAS_container {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .DAS_status {
-        width: 100%;
-        margin-top: 162vh;
-    }
-
-    .DAS_expenses {
-        width: 100%;
-    }
-
-    .DAS_ISI {
-        width: 100%;
-    }
-
-    .DAS_expenses_data {
-        max-height: 60%;
-    }
-}
-
 
 /* ADD EXPENSE PAGE */
 
@@ -553,9 +572,9 @@ i:hover::before {
     justify-content: center;
     align-items: center;
     background-color: #505050;
-    width: 25%;
+    width: 30%;
     min-width: 350px;
-    max-width: 500px;
+    max-width: 700px;
     height: 10vh;
     padding: 10px;
     border-radius: 30px;
@@ -593,3 +612,4 @@ i:hover::before {
     color:#505050;
     text-decoration: none;
 }
+

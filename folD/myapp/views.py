@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.db.models import Sum
 from datetime import datetime
 
-from .models import Bank, BankEvent, Income
+from .models import Bank, BankEvent, Income, Saving, Investment
 from .forms import BankEventForm, AddIncomeForm, AddSavingForm, AddInvestmentForm
 
 @login_required(login_url='login')
@@ -11,8 +12,17 @@ def dashboard(request):
     curruser = request.user.id
     expenses = BankEvent.objects.filter(bank_id=curruser)
     incomes = Income.objects.filter(bank_id=curruser)
+    saved = Saving.objects.filter(bank_id=curruser)
+    invested = Investment.objects.filter(bank_id=curruser)
 
-    context = {'expenses': expenses, 'incomes': incomes}
+    expensessum = expenses.aggregate(total_amount=Sum('amount'))['total_amount']
+    incomessum = incomes.aggregate(total_amount=Sum('amount1'))['total_amount']
+    saved = saved.aggregate(total_amount=Sum('amount2'))['total_amount']
+    invested = invested.aggregate(total_amount=Sum('amount3'))['total_amount']
+    
+    balance = incomessum - expensessum
+
+    context = {'expenses': expenses, 'expensessum': expensessum, 'incomes': incomes, 'balance': balance, 'saved': saved, 'invested': invested}
     return render(request, "/workspaces/gradeproject/folD/myapp/templates/index.html", context)
 
 @login_required(login_url='login')

@@ -26,19 +26,16 @@ class AddIncomeForm(forms.ModelForm):
 class AddSavingForm(forms.ModelForm):
     class Meta:
         model = Saving
-        fields = ['amount2', 'place2']
+        fields = ['amount2']
         widgets = {
             'amount2': forms.NumberInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Amount'}),
-            'place2': forms.TextInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Place'}),
         }
 
 class AddInvestmentForm(forms.ModelForm):
     class Meta:
         model = Investment
-        fields = ['amount3', 'place3', 'interest']
+        fields = ['amount3']
         widgets = {
             'amount3': forms.NumberInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Amount'}),
-            'place3': forms.TextInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Place'}),
-            'interest': forms.NumberInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Interest'}),
         }
 
