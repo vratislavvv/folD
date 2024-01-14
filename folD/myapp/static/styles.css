@@ -483,13 +483,19 @@ i:hover::before {
     gap: 2%
 }
 
+.INC_part {
+    display: flex;
+    flex-direction: column;
+}
+
 .INC_bar {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     width: 100%;
 }
 
-.INC_postform {
+.INC_postform1 {
     width: 100%;
 }
 
@@ -555,6 +561,28 @@ i:hover::before {
     border: none;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     position: relative;
+}
+
+.INC_postform2 {
+    display: flex;
+    justify-content: center;
+}
+
+.INC_reset {
+    width: 100%;
+}
+
+.INC_reset_button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 8px 22px;
+    border-radius: 6px;
+    margin-top: 25px;
+    background: rgb(237, 41, 6);
+    transition: all 0.2s ease;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
 /* SETTINGS PAGE */

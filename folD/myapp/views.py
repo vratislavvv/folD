@@ -20,7 +20,10 @@ def dashboard(request):
     saved = saved.aggregate(total_amount=Sum('amount2'))['total_amount']
     invested = invested.aggregate(total_amount=Sum('amount3'))['total_amount']
     
-    balance = incomessum - expensessum
+    if incomessum == None:
+        balance = expensessum * -1
+    else:
+        balance = incomessum - expensessum
 
     context = {'expenses': expenses, 'expensessum': expensessum, 'incomes': incomes, 'balance': balance, 'saved': saved, 'invested': invested}
     return render(request, "/workspaces/gradeproject/folD/myapp/templates/index.html", context)
@@ -63,6 +66,13 @@ def incomes(request):
             if form.is_valid():
                 form.instance.bank_id = bank_instance
                 form.save()
+        
+        if 'flush_incomes' in request.POST:
+            Income.objects.filter(bank_id=bank_instance).delete()
+        elif 'flush_savings' in request.POST:
+            Saving.objects.filter(bank_id=bank_instance).delete()
+        elif 'flush_investments' in request.POST:
+            Investment.objects.filter(bank_id=bank_instance).delete()
 
         return redirect('dashboard')
         

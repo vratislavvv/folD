@@ -10,7 +10,7 @@
     
         <div class="INC_container">
             <div class="INC_bar">
-                <form method="POST" action="" class="INC_postform">
+                <form method="POST" action="" class="INC_postform1">
                     {% csrf_token %}
                     <div class="INC_form">
                         <div class="INC_form_headline">
@@ -26,9 +26,15 @@
                         </div>
                     </div>
                 </form>
+                <form method="POST" action="" class="INC_postform2">
+                    {% csrf_token %}
+                    <div class="INC_reset">
+                        <input type="submit" name="flush_incomes" value="Flush Incomes" class="INC_reset_button">
+                    </div>
+                </form>
             </div>
             <div class="INC_bar">
-                <form method="POST" action="" class="INC_postform">
+                <form method="POST" action="" class="INC_postform1">
                     {% csrf_token %}
                     <div class="INC_form">
                         <div class="INC_form_headline">
@@ -43,9 +49,15 @@
                         </div>
                     </div>
                 </form>
+                <form method="POST" action="" class="INC_postform2">
+                    {% csrf_token %}
+                    <div class="INC_reset">
+                        <input type="submit" name="flush_savings" value="Flush Savings" class="INC_reset_button">
+                    </div>
+                </form>
             </div>
             <div class="INC_bar">
-                <form method="POST" action="" class="INC_postform">
+                <form method="POST" action="" class="INC_postform1">
                     {% csrf_token %}
                     <div class="INC_form">
                         <div class="INC_form_headline">
@@ -58,6 +70,12 @@
                             </div>
                             <input type="submit" value="Add" class="INC_form_submitbutton">                            
                         </div>
+                    </div>
+                </form>
+                <form method="POST" action="" class="INC_postform2">
+                    {% csrf_token %}
+                    <div class="INC_reset">
+                        <input type="submit" name="flush_investments" value="Flush Investments" class="INC_reset_button">
                     </div>
                 </form>
             </div>
