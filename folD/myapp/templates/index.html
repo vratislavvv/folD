@@ -1,6 +1,5 @@
 {% extends "/workspaces/gradeproject/folD/myapp/templates/layouts/layout.html" %}
 {% load static %}
-{% load matplotlib %}
 
 {% block title %}
     Dashboard
@@ -125,13 +124,11 @@
         </div>
     </div>
 
-    <!-- Your Django template -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
         var ctx = document.getElementById('expenseChart').getContext('2d');
         
-        // Prepare data using Django template language
         var data = {
             labels: [
                 {% for expense in expenses_by_type %}
@@ -145,18 +142,43 @@
                     {% endfor %}
                 ],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.7)',
-                    'rgba(255, 159, 64, 0.7)',
-                    // ... add more colors as needed
+                    'rgb(241,169,12)',
+                    'rgb(233,116,24)',
+                    'rgb(236,138,20)',
+                    'rgb(227,71,36)',
+                    'rgb(228,95,28)',
+                    'rgb(220,49,43)',
+                    'rgb(236,153,12)',
+                    'rgb(243,185,4)',
+                    'rgb(228,84,28)',
                 ],
             }]
         };
-    
+
+        var options = {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                display: true,
+                labels: {
+                    fontColor: 'white',
+                },
+            },
+        };
+
+
+
         var myPieChart = new Chart(ctx, {
             type: 'pie',
             data: data,
+            options: options,
         });
     </script>
 
+    <style>
+        #expenseChart .chartjs-render-monitor .chartjs-legend {
+            color: white !important;
+        }
+    </style>
 
 {% endblock %}
