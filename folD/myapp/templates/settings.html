@@ -12,6 +12,15 @@
             <div class="SET_headline">
                 <p class="SET_headline_text">Settings</p>
             </div>
+            <form method="POST" action="" class="SET_postform1">
+                {% csrf_token %}
+                <div class="SET_flush">
+                    <input type="submit" name="flush_data" value="Flush Data" class="SET_reset_button">
+                </div>
+            </form>
+            <div class="SET_flush">
+                
+            </div>
             <div class="SET_logout">
                 <a href="{% url 'logout' %}" class="SET_logout_icon">
                     <i class="fa-solid fa-right-from-bracket"></i>

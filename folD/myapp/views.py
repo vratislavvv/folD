@@ -7,8 +7,12 @@ from datetime import datetime
 from .models import Bank, BankEvent, Income, Saving, Investment
 from .forms import BankEventForm, AddIncomeForm, AddSavingForm, AddInvestmentForm
 
+buffer = 0
+
 @login_required(login_url='login')
 def dashboard(request):
+
+    datecheck(request)
 
     curruser = request.user.id
     expenses = BankEvent.objects.filter(bank_id=curruser)
@@ -23,10 +27,15 @@ def dashboard(request):
     
     expenses_by_type = BankEvent.objects.values('place_type').annotate(total_amount=models.Sum('amount'))
 
-    if incomessum == None:
-        balance = expensessum * -1
-    else:
+    if incomessum is not None and expensessum is not None:
         balance = incomessum - expensessum
+    elif incomessum == None and expensessum is not None:
+        balance = -expensessum
+    elif expensessum == None:
+        balance = incomessum
+    else:
+        balance = None
+
 
     context = {
         'expenses': expenses, 
@@ -40,9 +49,6 @@ def dashboard(request):
 
     return render(request, "/workspaces/gradeproject/folD/myapp/templates/index.html", context)
 
-@login_required(login_url='login')
-def settings(request):
-    return render(request, "/workspaces/gradeproject/folD/myapp/templates/settings.html", {})
 
 @login_required(login_url='login')
 def add_expense(request):
@@ -62,6 +68,7 @@ def add_expense(request):
     
     context = {'form': form}    
     return render(request, "/workspaces/gradeproject/folD/myapp/templates/new_expense.html", context)
+
 
 @login_required(login_url='login')
 def incomes(request):
@@ -95,3 +102,52 @@ def incomes(request):
 
     context = {'form1': form1, 'form2': form2, 'form3': form3}
     return render(request, "/workspaces/gradeproject/folD/myapp/templates/incomes.html", context)
+
+
+@login_required(login_url='login')
+def settings(request):
+
+    if request.method == "POST":
+        bank_instance = Bank.objects.get(username=request.user.username)
+
+        Saving.objects.filter(bank_id=bank_instance).delete()
+        Investment.objects.filter(bank_id=bank_instance).delete()
+        Income.objects.filter(bank_id=bank_instance).delete()
+        BankEvent.objects.filter(bank_id=bank_instance).delete()
+
+        return redirect('dashboard')
+
+    return render(request, "/workspaces/gradeproject/folD/myapp/templates/settings.html", {})
+
+
+def datecheck(request):
+    global buffer
+
+    bank_instance = Bank.objects.get(username=request.user.username)
+    wageday = Income.objects.filter(bank_id=bank_instance).first()
+    time = datetime.now()
+    day = int(time.day)
+
+    if wageday is not None:
+        wageday = int(wageday.wageday)
+
+        if day == wageday and buffer == 0:
+            buffer += 1
+            BankEvent.objects.filter(bank_id=bank_instance).delete()
+
+        elif day != wageday and buffer == 1:
+            buffer = 0
+
+    else:
+        if day == 1 and buffer == 0:
+            buffer += 1
+            BankEvent.objects.filter(bank_id=bank_instance).delete()
+            return print(11)
+
+        elif day != 1 and buffer == 1:
+            buffer = 0
+
+
+    return 0
+
+    
