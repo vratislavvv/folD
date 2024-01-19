@@ -6,6 +6,12 @@ Personal finance manager, that helps you understand your current financial situa
 ## The idea
 I wanted to create something that would actually help me, and I alway found banking apps kinda complicated + I wasn't able to see expenses from multiple account in one graph.
 
+# Desing
+
+## Logo
+
+## Colors
+
 # Technical documentation
 
 ## Technologies
