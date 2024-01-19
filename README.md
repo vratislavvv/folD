@@ -19,3 +19,9 @@ As you might noticed, the colors are matching the logo. I just took the color co
 ## Technologies
 Application is built using Python framework Django, which covers the whole backend side.
 On the other side, for front end, I decided to use classic HTML & CSS. Besides these two, I also used free open-source JavaScript library called Charts.js, which covers the big chart on the dashboard.
+Every piece of data is stored in sqlite3 database that is automatically created for you when you create django project.
+
+## Code structure
+To start off, in the code, there are three main important folders. First one called folD which represents the project folder, and then 2 application folders. First application folder called myapp, and second one called accessing.
+_Myapp- 
+  
