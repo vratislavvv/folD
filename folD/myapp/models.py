@@ -6,7 +6,6 @@ from django.core.validators import MinValueValidator, MaxValueValidator
         
 class Bank(models.Model):
     username = models.CharField(max_length=32, unique=True, null=True)
-    balance = models.DecimalField(max_digits=20, decimal_places=2)
 
     def __str__(self):
         return str(self.username)
@@ -80,3 +79,4 @@ class Investment(models.Model):
 
     def __str__(self):
         return f"+{self.amount3}$ to Investments"
+    
