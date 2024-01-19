@@ -10,7 +10,9 @@ I wanted to create something that would actually help me, and I alway found bank
 
 ## Logo
 Picture I use as a logo was not made by me, it is a canva template which I liked a lot and you can find the creator [here](https://www.canva.com/p/cincin-emas/).
+
 ## Colors
+As you might noticed, the colors are matching the logo. I just took the color codes from the logo and created a gradient that is displayed in the background. Later on, I picked color codes from the gradient, and added them to the script that is creating the graph.
 
 # Technical documentation
 
