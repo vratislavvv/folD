@@ -22,7 +22,8 @@ On the other side, for front end, I decided to use classic HTML & CSS. Besides t
 Every piece of data is stored in sqlite3 database that is automatically created for you when you create django project.
 
 ## Code structure
-To start off, in the code, there are three main important folders. First one called folD which represents the project folder, and then 2 application folders. First application folder called myapp, and second one called accessing.
+To start off, in the code, there are three main important folders. First one called folD which represents the project folder, and then 2 application folders. First application folder called *myapp*, and second one called *accessing*.
 
-Let's start with the accessing. This app has only one and single purpose, and that is authentification. It is much safer to handle authentification this way than having everything in a single app. The authentification system is handled by Django user authentification system.
-  
+Let's start with the *accessing*. This app has only one and single purpose, and that is authentification. It is much safer to handle authentification this way than having everything in a single app. The authentification system is handled by Django user authentification system.
+
+*Myapp* is basically for everything else. This app manages everything related to folD AFTER you log in.
