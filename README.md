@@ -23,5 +23,6 @@ Every piece of data is stored in sqlite3 database that is automatically created 
 
 ## Code structure
 To start off, in the code, there are three main important folders. First one called folD which represents the project folder, and then 2 application folders. First application folder called myapp, and second one called accessing.
+
 Let's start with the accessing. This app has only one and single purpose, and that is authentification. It is much safer to handle authentification this way than having everything in a single app. The authentification system is handled by Django user authentification system.
   
