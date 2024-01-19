@@ -26,4 +26,4 @@ To start off, in the code, there are three main important folders. First one cal
 
 Let's start with the *accessing*. This app has only one and single purpose, and that is authentification. It is much safer to handle authentification this way than having everything in a single app. The authentification system is handled by Django user authentification system.
 
-*Myapp* is basically for everything else. This app manages everything related to folD AFTER you log in.
+*Myapp* is basically for everything else. This app manages everything related to folD AFTER you log in, from dashboard, through adding pages, to settings tab.
