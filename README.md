@@ -9,7 +9,7 @@ I wanted to create something that would actually help me, and I alway found bank
 # Desing
 
 ## Logo
-
+Picture I use as a logo was not made by me, it is a canva template which I liked a lot and you can find the creator [here](https://www.canva.com/p/cincin-emas/).
 ## Colors
 
 # Technical documentation
