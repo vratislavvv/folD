@@ -25,7 +25,7 @@ def dashboard(request):
     saved = saved.aggregate(total_amount=Sum('amount2'))['total_amount']
     invested = invested.aggregate(total_amount=Sum('amount3'))['total_amount']
     
-    expenses_by_type = BankEvent.objects.values('place_type').annotate(total_amount=models.Sum('amount'))
+    expenses_by_type = BankEvent.objects.values('place_type').annotate(total_amount=models.Sum('amount')).filter(bank_id=curruser)
 
     if incomessum is not None and expensessum is not None:
         balance = incomessum - expensessum
@@ -146,7 +146,6 @@ def datecheck(request):
 
         elif day != 1 and buffer == 1:
             buffer = 0
-
 
     return 0
 
