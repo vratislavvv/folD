@@ -8,5 +8,6 @@ I wanted to create something that would actually help me, and I alway found bank
 
 # Technical documentation
 
-## 
-
+## Technologies
+Application is built using Python framework Django, which covers the whole backend side.
+On the other side, for front end, I decided to use classic HTML & CSS. Besides these two, I also used free open-source JavaScript library called Charts.js, which covers the big chart on the dashboard.
