@@ -6,6 +6,18 @@ Personal finance manager, that helps you understand your current financial situa
 ## The idea
 I wanted to create something that would actually help me, and I alway found banking apps kinda complicated + I wasn't able to see expenses from multiple account in one graph.
 
+# Pages
+
+## Authentification
+Login- used for logging in
+Register- used for registering new user
+
+## Myapp
+Dashboard- displays everything, incomes, expenses, data in chart, savings & investments, balance, etc. 
+Add expense- used for adding expenses and flushing them
+Add earnings and assets- used for adding incomes, savings & investments and flushing them 
+Settings- used for logging out of the application and reseting data in application.
+
 # Desing
 
 ## Logo
