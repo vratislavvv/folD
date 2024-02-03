@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "myapp.apps.MyappConfig",
-    "accessing",
+    'apps.myapp.apps.MyappConfig',
+    "apps.accessing",
     "crispy_forms",
     "crispy_bootstrap5",
     "widget_tweaks",
@@ -68,7 +68,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'myapp/templates'),
+            os.path.join(BASE_DIR, 'templates/'),
             os.path.join(BASE_DIR, 'accessing/templates/authentification'),
         ],
         'APP_DIRS': True,
@@ -134,7 +134,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "myapp/static")]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static/css")]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
