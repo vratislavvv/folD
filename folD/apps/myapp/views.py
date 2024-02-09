@@ -47,7 +47,7 @@ def dashboard(request):
         'expenses_by_type': expenses_by_type,
     }
 
-    return render(request, "/workspaces/gradeproject/folD/myapp/templates/index.html", context)
+    return render(request, "index.html", context)
 
 
 @login_required(login_url='login')
@@ -67,7 +67,7 @@ def add_expense(request):
         form = BankEventForm() 
     
     context = {'form': form}    
-    return render(request, "/workspaces/gradeproject/folD/myapp/templates/new_expense.html", context)
+    return render(request, "new_expense.html", context)
 
 
 @login_required(login_url='login')
@@ -101,7 +101,7 @@ def incomes(request):
         form3 = AddInvestmentForm()
 
     context = {'form1': form1, 'form2': form2, 'form3': form3}
-    return render(request, "/workspaces/gradeproject/folD/myapp/templates/incomes.html", context)
+    return render(request, "incomes.html", context)
 
 
 @login_required(login_url='login')
@@ -117,7 +117,7 @@ def settings(request):
 
         return redirect('dashboard')
 
-    return render(request, "/workspaces/gradeproject/folD/myapp/templates/settings.html", {})
+    return render(request, "settings.html", {})
 
 
 def datecheck(request):
