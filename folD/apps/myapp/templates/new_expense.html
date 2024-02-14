@@ -1,12 +1,14 @@
 {% extends "layout.html" %}
 
-{% load static %}
+{% load static widget_tweaks %}
 
 {% block title %}
     Add expense
 {% endblock %}
 
-{% load widget_tweaks %}
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/new_expense.css' %}">
+{% endblock %}
 
 {% block main %}
 

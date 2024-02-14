@@ -1,0 +1,70 @@
+.EXP_headline {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #505050;
+    width: 25%;
+    min-width: 350px;
+    max-width: 500px;
+    height: 10vh;
+    padding: 30px;
+    border-radius: 30px;
+    margin:0 auto;
+    margin-top: 10vh;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+.EXP_headline_text {
+    font-size: x-large;
+    color: black;
+    border-radius: 10px;
+    padding: 7px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background: linear-gradient(to left, var(--logc1-color), var(--logc3-color));
+}
+
+.EXP_main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #505050;
+    width: 25%;
+    min-width: 350px;
+    max-width: 500px;
+    height: 35vh;
+    padding: 30px;
+    border-radius: 30px;
+    margin:0 auto;
+    margin-top: 5vh;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+.EXP_forms {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 25px;
+}
+
+.EXP_input {
+    width: 100%;
+    height: 40px;
+    background-color: #b8b8b8;
+    border-radius: 100px;
+    padding: 0 10px;
+    border: #b8b8b8;
+}
+
+.EXP_button {
+    padding: 8px 22px;
+    border-radius: 6px;
+    margin-top: 25px;
+    background: linear-gradient(to left, var(--logc1-color), var(--logc3-color));
+    transition: all 0.2s ease;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    position: relative;
+}
