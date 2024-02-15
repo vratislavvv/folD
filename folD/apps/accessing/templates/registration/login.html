@@ -1,35 +1,33 @@
 {% extends "base.html" %}
 
+{% load static crispy_forms_tags widget_tweaks %}
+
 {% block title %}
     Accessing
 {% endblock %}
-
-{% load crispy_forms_tags %}
-{% load static %}
-{% load widget_tweaks %}
 
 {% block content %}
 
     <form method="POST" action="">
         {% csrf_token %}
-        <div class="LOGIN">
-            <div class="LOGIN_logo">
-                <img src="{% static 'images/logo.png' %}" class="LOGIN_logo_object">
+        <div class="ACCESS">
+            <div class="logo">
+                <img src="{% static 'images/logo.png' %}" class="logo_object">
             </div>
-            <div class="LOGIN_forms">
-                <div class="LOGIN_loginform">
-                    <input type="text" placeholder="Username" class="LOGIN_inputform lgn" name="username">
-                    <input type="password" placeholder="Password" class="LOGIN_inputform lgn" name="password">
+            <div class="forms">
+                <div class="loginform">
+                    <input type="text" placeholder="Username" class="inputform lgn" name="username">
+                    <input type="password" placeholder="Password" class="inputform lgn" name="password">
                 </div>
             </div>
-            <div class="REG_alreadyuser">
+            <div class="alreadyuser">
                 Don't have an accout? Create one <a href="{% url 'register' %}" style="margin-left: 1mm;">here</a>!
             </div>
             {% for message in messages %}
                 <p>{{ message }}</p>
             {% endfor %}
             {{ form.errors }}
-            <div class="LOGIN_submits">
+            <div class="submits">
                 <div class="LOGIN_loginsubmit">
                     <input type="submit" value="Login" class="submit_btn rgstr">
                 </div>

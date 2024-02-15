@@ -1,37 +1,35 @@
-{% extends "layouts/base.html" %}
+{% extends "base.html" %}
+
+{% load static crispy_forms_tags widget_tweaks %}
 
 {% block title %}
     Accessing
 {% endblock %}
 
-{% load crispy_forms_tags %}
-{% load static %}
-{% load widget_tweaks %}
-
 {% block content %}
 
     <form method="POST" action="">
         {% csrf_token %}
-        <div class="LOGIN">
-            <div class="LOGIN_logo">
-                <img src="{% static 'images/logo.png' %}" class="LOGIN_logo_object">
+        <div class="ACCESS">
+            <div class="logo">
+                <img src="{% static 'images/logo.png' %}" class="logo_object">
             </div>
-            <div class="LOGIN_forms">
-                <div class="LOGIN_registerform">
-                    {{ form.username|add_class:"LOGIN_inputform rgstr"|attr:"placeholder:Username"|attr:"name:username" }}
-                    {{ form.password1|add_class:"LOGIN_inputform rgstr"|attr:"placeholder:Password" }}
-                    {{ form.password2|add_class:"LOGIN_inputform rgstr"|attr:"placeholder:Repeat Password" }}
+            <div class="forms">
+                <div class="registerform">
+                    {{ form.username|add_class:"inputform rgstr"|attr:"placeholder:Username"|attr:"name:username" }}
+                    {{ form.password1|add_class:"inputform rgstr"|attr:"placeholder:Password" }}
+                    {{ form.password2|add_class:"inputform rgstr"|attr:"placeholder:Repeat Password" }}
                 </div>
             </div>
-            <div class="REG_alreadyuser">
+            <div class="alreadyuser">
                 Already have an accout? Login <a href="{% url 'login' %}" style="margin-left: 1mm;">here</a>!
             </div>
             {% for message in messages %}
                 <p>{{ message }}</p>
             {% endfor %}
             {{ form.errors }}
-            <div class="LOGIN_submits">
-                <div class="LOGIN_registersubmit">
+            <div class="submits">
+                <div class="registersubmit">
                     <input type="submit" value="Register" class="submit_btn rgstr">
                 </div>
             </div>
