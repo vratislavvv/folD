@@ -57,7 +57,8 @@
     justify-content: center;
     align-items: center;
     background-color: #505050;
-    height: 30vh;
+    height: 30%;
+    min-height: 300px;
     padding: 30px;
     border-radius: 30px;
     margin:0 auto;
@@ -108,7 +109,8 @@
     width: 100%;
     padding: 8px 22px;
     border-radius: 6px;
-    margin-top: 25px;
+    margin-top: 12px;
+    margin-bottom: 20px;
     background: rgb(237, 41, 6);
     transition: all 0.2s ease;
     border: none;

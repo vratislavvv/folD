@@ -14,23 +14,23 @@
             <div class="logo">
                 <img src="{% static 'images/logo.png' %}" class="logo_object">
             </div>
-            <div class="forms">
-                <div class="loginform">
-                    <input type="text" placeholder="Username" class="inputform lgn" name="username">
-                    <input type="password" placeholder="Password" class="inputform lgn" name="password">
+            <div class="lines">
+                <div class="forms">
+                    <div class="loginform">
+                        <input type="text" placeholder="Username" class="inputform lgn" name="username">
+                        <input type="password" placeholder="Password" class="inputform lgn" name="password">
+                    </div>
                 </div>
-            </div>
-            <div class="alreadyuser">
-                Don't have an accout? Create one <a href="{% url 'register' %}" style="margin-left: 1mm;">here</a>!
+                <div class="alreadyuser">
+                    Don't have an accout? Create one <a href="{% url 'register' %}" style="margin-left: 1mm;">here</a>!
+                </div>
             </div>
             {% for message in messages %}
                 <p>{{ message }}</p>
             {% endfor %}
             {{ form.errors }}
-            <div class="submits">
-                <div class="LOGIN_loginsubmit">
-                    <input type="submit" value="Login" class="submit_btn rgstr">
-                </div>
+            <div class="loginsubmit">
+                <input type="submit" value="Login" class="submit_btn rgstr">
             </div>
         </div>
     </form>

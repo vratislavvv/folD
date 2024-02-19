@@ -4,14 +4,11 @@
     justify-content: center;
     align-items: center;
     background-color: #505050;
-    width: 25%;
-    min-width: 350px;
+    width: 85%;
     max-width: 500px;
     height: 10vh;
-    padding: 30px;
     border-radius: 30px;
     margin:0 auto;
-    margin-top: 10vh;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
 }
 
@@ -30,8 +27,7 @@
     justify-content: center;
     align-items: center;
     background-color: #505050;
-    width: 25%;
-    min-width: 350px;
+    width: 85%;
     max-width: 500px;
     height: 35vh;
     padding: 30px;
@@ -43,7 +39,6 @@
 
 .EXP_forms {
     display: flex;
-    align-items: center;
     flex-direction: column;
     width: 100%;
     gap: 25px;
@@ -66,5 +61,16 @@
     transition: all 0.2s ease;
     border: none;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    position: relative;
 }
+
+.EXP_button:hover {
+    background-color: #2980b9;
+  }
+
+  .EXP_button:focus {
+    outline: none;
+  }
+
+  .EXP_button:active {
+    transform: translateY(3.5px);
+  }

@@ -23,6 +23,8 @@
 }
 
 .SET_headline_text {
+    display: flex;
+    align-items: center;
     font-size: 150%;
     color: black;
     height: 60%;

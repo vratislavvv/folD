@@ -8,7 +8,6 @@
     height: 60vh;
     padding: 30px;
     border-radius: 30px;
-    margin:0 auto;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
 }
 
@@ -16,13 +15,11 @@
     display: flex;
     justify-content: center;
     width: 74px;
-    margin-left: 10px;
     margin-bottom: 25px;
 }
 
 .logo_object {
     max-width: 100%;
-    width: 64px;
 }
 
 .label {  
@@ -37,16 +34,17 @@
     padding: 0 10px;
 }
 
-.forms {
-    display: flex;
-    flex-direction: column;
+.lines {
     width: 100%;
-    max-width: 400px;
+    max-width: 600px;
+}
+
+.forms {
+    width: 100%;
 }
 
 .loginform {
     display: flex;
-    align-items: center;
     flex-direction: column;
     gap: 20px;
 }
@@ -75,7 +73,6 @@
     transition: all 0.2s ease;
     border: none;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    position: relative;
 }
 
 .submit_btn:active {
@@ -91,8 +88,6 @@
     height: 25px;
     background-color: #b8b8b8;
     border-radius: 100px;
-    padding: 0 10px;
-    border: #b8b8b8;
     margin-top: 20px;
 }
 
