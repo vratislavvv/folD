@@ -1,15 +1,19 @@
+@media only screen and (max-width: 1200px) {
+    .INC_container {
+        flex-wrap: wrap;
+    }
+}
+
 .INC_container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
     background-color: transparent;
-    width: 90%;
+    width: 85%;
     height: 77vh;
-    padding: 30px;
-    border-radius: 30px;
     margin:0 auto;
-    margin-top: 15vh;
+    margin-top: 16vh;
     gap: 2%
 }
 
@@ -31,20 +35,16 @@
 
 .INC_form_headline {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #505050;
     height: 10vh;
-    padding: 30px;
     border-radius: 30px;
-    margin:0 auto;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
 }
 
 .INC_form_headline_text {
     font-size: x-large;
-    color: black;
     border-radius: 10px;
     padding: 7px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -57,18 +57,15 @@
     justify-content: center;
     align-items: center;
     background-color: #505050;
-    height: 30%;
     min-height: 300px;
     padding: 30px;
     border-radius: 30px;
-    margin:0 auto;
     margin-top: 2.5vh;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
 }
 
 .INC_form_forms {
     display: flex;
-    align-items: center;
     flex-direction: column;
     width: 100%;
     gap: 25px;

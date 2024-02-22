@@ -22,7 +22,12 @@
                 </div>
             </div>
             <div class="alreadyuser">
-                Already have an accout? Login <a href="{% url 'login' %}" style="margin-left: 1mm;">here</a>!
+                <div class="part1">
+                    <p>Already have an account?</p>
+                </div>
+                <div class="part2">
+                    <p>Login<a href="{% url 'login' %}" style="margin-left: 1mm;">here</a>!</p>
+                </div>
             </div>
             {% for message in messages %}
                 <p>{{ message }}</p>

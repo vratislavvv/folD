@@ -1,3 +1,8 @@
+.EXP_container {
+    height: 77vh;
+    margin-top: 16vh;
+}
+
 .EXP_headline {
     display: flex;
     flex-direction: column;

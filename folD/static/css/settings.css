@@ -1,8 +1,6 @@
 .SET_container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    height: 77vh;
+    margin-top: 16vh;
 }
 
 .SET_headline {
@@ -11,14 +9,13 @@
     justify-content: center;
     align-items: center;
     background-color: #505050;
-    width: 30%;
-    min-width: 350px;
-    max-width: 700px;
+    width: 85%;
+    min-width: 297.5px;
+    max-width: 500px;    
     height: 10vh;
     padding: 10px;
     border-radius: 30px;
     margin:0 auto;
-    margin-top: 10vh;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
 }
 
@@ -39,31 +36,22 @@
     justify-content: center;
 }
 
-.SET_flush {
+.SET_flush, .SET_logout {
     display: flex;
     justify-content: center;
     width: 100%;
 }
 
-.SET_reset_button {
+.SET_reset_button, .SET_logout_icon {
     display: flex;
     justify-content: center;
-    width: 30%;
+    width: 85%;
+    min-width: 297.5px;
+    max-width: 500px;
     padding: 8px 22px;
     border-radius: 6px;
-    margin-top: 25px;
-    background: rgb(237, 41, 6);
-    transition: all 0.2s ease;
-    border: none;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-}
-.SET_logout {
-    display: flex;
-    justify-content: center;
-    width: 30%;
-    padding: 8px 22px;
-    border-radius: 6px;
-    margin-top: 25px;
+    margin-top: 12px;
+    margin-bottom: 10px;
     background: rgb(237, 41, 6);
     transition: all 0.2s ease;
     border: none;
@@ -71,6 +59,6 @@
 }
 
 .SET_logout_icon {
-    color:#505050;
+    color: black;
     text-decoration: none;
 }

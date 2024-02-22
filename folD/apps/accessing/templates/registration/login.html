@@ -22,7 +22,12 @@
                     </div>
                 </div>
                 <div class="alreadyuser">
-                    Don't have an accout? Create one <a href="{% url 'register' %}" style="margin-left: 1mm;">here</a>!
+                    <div class="part1">
+                        <p>Don't have an accout?</p>
+                    </div>
+                    <div class="part2">
+                        <p>Create one<a href="{% url 'register' %}" style="margin-left: 1mm;">here</a>!</p>
+                    </div>
                 </div>
             </div>
             {% for message in messages %}
