@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Wanna know how much you spend on daily, weekly or monthly basis? folD is the only product you need to know so!">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/layout.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/front.css' %}">
+
+        <title>folD: Know your spendings!</title>
+
+    </head>
+
+    <body>
+
+        <div class="container">
+            <nav class="MAINnav">
+                <div class="MAINnav_div">
+                    <div class="MAINnav_logo">
+                        <img src="{% static 'images/logo.png' %}" class="MAINnav_logo_object">
+                    </div>
+                    <div class="MAINnav_buttons">
+                        <a class="MAINnav_link" href="{% url 'dashboard' %}">
+                            <i class="fa-solid fa-user fa-2x"></i>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            <div class="firsttab">
+                <div class="fisttab_headline">
+                    <p>Tvoja mama</p>
+                    
+                </div>
+                <div class="firsttab_box">
+                    <img src="{% static 'images/notebook.png' %}" class="firsttab_notebook">
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+</html>

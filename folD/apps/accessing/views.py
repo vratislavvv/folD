@@ -6,6 +6,9 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import RegistrationForm
 from apps.myapp.models import Bank
 
+def front(request):
+    return render(request, "front.html")
+
 def register_user(request):
 
     if request.user.is_authenticated:

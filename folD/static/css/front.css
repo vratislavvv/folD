@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.MAINnav_buttons {
+    flex-direction: row-reverse;
+    margin-right: 10px;
+}
+
+.firsttab {
+    display: flex;
+    flex-direction: row;
+
+}
