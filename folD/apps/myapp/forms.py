@@ -1,10 +1,10 @@
 from django import forms
-from .models import BankEvent, Income, Saving, Investment
+from .models import BankEvent, Income, Saving, Investment, Subscribtion
 
 class BankEventForm(forms.ModelForm):
     class Meta:
         model = BankEvent
-        fields = ['amount', 'place', 'place_type']
+        fields = ['bankevent_amount', 'bankevent_place', 'bankevent_place_type']
         widgets = {
             'place_type': forms.Select(attrs={'class': 'EXP_input'}),
         }
@@ -13,29 +13,37 @@ class BankEventForm(forms.ModelForm):
         super(BankEventForm, self).__init__(*args, **kwargs)
         self.fields['place_type'].choices = [('', 'Select Place Type')] + list(BankEvent.PLACE_TYPES)
 
+class SubscribtionForm(forms.ModelForm):
+    class Meta:
+        model = Subscribtion
+        field = ['subscribtion_amount', 'subscribtion_place', 'subscribtion_place_type']
+        widgets= {
+            'subscribtion_amount': forms.NumberInput(attrs={'class': 'x', 'placeholder': 'Amount'}),
+        }
+
 class AddIncomeForm(forms.ModelForm):
     class Meta:
         model = Income
-        fields = ['amount1', 'place1', 'wageday']
+        fields = ['income_amount', 'income_place', 'income_wageday']
         widgets = {
-            'amount1': forms.NumberInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Amount'}),
-            'place1': forms.TextInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Place'}),
-            'wageday': forms.NumberInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Wage day'}),
+            'income_amount': forms.NumberInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Amount'}),
+            'income_place': forms.TextInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Place'}),
+            'income_wageday': forms.NumberInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Wage day'}),
         }
 
 class AddSavingForm(forms.ModelForm):
     class Meta:
         model = Saving
-        fields = ['amount2']
+        fields = ['saving_amount']
         widgets = {
-            'amount2': forms.NumberInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Amount'}),
+            'saving_amount': forms.NumberInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Amount'}),
         }
 
 class AddInvestmentForm(forms.ModelForm):
     class Meta:
         model = Investment
-        fields = ['amount3']
+        fields = ['investment_amount']
         widgets = {
-            'amount3': forms.NumberInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Amount'}),
+            'investment_amount': forms.NumberInput(attrs={'class': 'INC_incform_input', 'placeholder': 'Amount'}),
         }
 

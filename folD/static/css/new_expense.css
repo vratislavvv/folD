@@ -1,5 +1,9 @@
 .EXP_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     height: 77vh;
+    width: 100%;
     margin-top: 16vh;
 }
 
@@ -70,12 +74,12 @@
 
 .EXP_button:hover {
     background-color: #2980b9;
-  }
+}
 
-  .EXP_button:focus {
+.EXP_button:focus {
     outline: none;
-  }
+}
 
-  .EXP_button:active {
+.EXP_button:active {
     transform: translateY(3.5px);
-  }
+}

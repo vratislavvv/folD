@@ -1,7 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import User
 from datetime import datetime
 from django.core.validators import MinValueValidator, MaxValueValidator
+from models_data import *
 
         
 class Bank(models.Model):
@@ -10,53 +10,29 @@ class Bank(models.Model):
     def __str__(self):
         return str(self.username)
 
-class BankEvent(models.Model):
-    PLACE_TYPES = (
-        ('Groceries', 'Groceries'),
-        ('Restaurants', 'Restaurants'),
-        ('Cafe', 'Cafe'),
-        ('Hobby', 'Hobby'),
-        ('Travel', 'Travel'),
-        ('Culture', 'Culture'),
-        ('Clothing', 'Clothing'),
-        ('Subscriptions', 'Subscriptions'),
-        ('Telephone, Internet, TV', 'Telephone, Internet, TV'),
-        ('Household costs', 'Household costs'),
-        ('Household', 'Household'),
-        ('Car', 'Car'),
-        ('Insurance', 'Insurance'),
-        ('Credit card', 'Cradit card'),
-        ('Loan', 'Loan'),
-        ('Healthcare', 'Healthcare'),
-        ('Child', 'Child'),
-        ('People', 'People'),
-        ('Presents', 'Presents'),
-        ('Investments', 'Investments'),
-        ('Savings', 'Savings'),
-        ('Charity', 'Charity'),
-        ('Other', 'Other'),
-    )
 
+class BankEvent(models.Model):
     bank_id = models.ForeignKey(Bank, on_delete=models.CASCADE)
-    amount = models.DecimalField(max_digits=20, decimal_places=2)
-    place = models.CharField(max_length=100)
-    place_type = models.CharField(max_length=100, choices=PLACE_TYPES)
-    time = models.DateTimeField(default=datetime.now)
+    bankevent_amount = models.DecimalField(max_digits=20, decimal_places=2)
+    bankevent_place = models.CharField(max_length=100)
+    bankevent_place_type = models.CharField(max_length=100, choices=PLACE_TYPES)
+    bankevent_time = models.DateTimeField(default=datetime.now)
 
     def __str__(self):
-        return f"{self.amount} at {self.place} ({self.place_type}) on {self.time}"
+        return f"{self.bankevent_amount} at {self.bankevent_place} ({self.bankevent_place_type}) on {self.bankevent_time}"
+
 
 class Income(models.Model):
     bank_id = models.ForeignKey(Bank, on_delete=models.CASCADE)
-    place1 = models.CharField(max_length=100)
-    amount1 = models.DecimalField(
+    income_place = models.CharField(max_length=100)
+    income_amount = models.DecimalField(
         max_digits=20,
         decimal_places=2,
         validators=[
             MinValueValidator(0.01),
         ]
     )
-    wageday = models.IntegerField(
+    income_wageday = models.IntegerField(
         validators=[
             MinValueValidator(limit_value=1),
             MaxValueValidator(limit_value=31),
@@ -64,19 +40,37 @@ class Income(models.Model):
     )
 
     def __str__(self):
-        return f"+{self.amount1}$ from {self.place1} on {self.wageday}."
+        return f"+{self.income_amount}$ from {self.income_place} on {self.income_wageday}."
+
 
 class Saving(models.Model):
     bank_id = models.ForeignKey(Bank, on_delete=models.CASCADE)
-    amount2 = models.DecimalField(max_digits=20, decimal_places=2)
+    saving_amount = models.DecimalField(max_digits=20, decimal_places=2)
 
     def __str__(self):
-        return f"+{self.amount2}$ to Savings"
+        return f"+{self.saving_amount}$ to Savings"
+
 
 class Investment(models.Model):
     bank_id = models.ForeignKey(Bank, on_delete=models.CASCADE)
-    amount3 = models.DecimalField(max_digits=20, decimal_places=2)
+    investment_amount = models.DecimalField(max_digits=20, decimal_places=2)
 
     def __str__(self):
-        return f"+{self.amount3}$ to Investments"
+        return f"+{self.investment_amount}$ to Investments"
     
+
+class Subscribtion(models.Model):
+    bank_id = models.ForeignKey(Bank, on_delete=models.CASCADE)
+    subscribtion_place = models.CharField(max_length=100)
+    subscribtion_place_type = models.CharField(max_length=100, choices=PLACE_TYPES)
+    subscribtion_repetition = models.IntegerField(choices=PERIOD)
+    subscribtion_amount = models.DecimalField(
+        max_digits=20,
+        decimal_places=2,
+        validators=[
+            MinValueValidator(0.01),
+        ]
+    )
+
+    def __str__(self):
+        return f"-{self.subscribtion_amount}$ charged every {self.subscribtion_repetition} days"
