@@ -6,6 +6,7 @@ from datetime import datetime
 
 from .models import Bank, BankEvent, Income, Saving, Investment
 from .forms import BankEventForm, AddIncomeForm, AddSavingForm, AddInvestmentForm
+from .trading212.trading212api import investment_data
 
 buffer = 0
 
@@ -21,16 +22,15 @@ def dashboard(request):
     invested = Investment.objects.filter(bank_id=curruser)
 
     expensessum = expenses.aggregate(total_amount=Sum('amount'))['total_amount']
-    incomessum = incomes.aggregate(total_amount=Sum('amount1'))['total_amount']
-    saved = saved.aggregate(total_amount=Sum('amount2'))['total_amount']
-    invested = invested.aggregate(total_amount=Sum('amount3'))['total_amount']
+    incomessum = incomes.aggregate(total_amount=Sum('amount'))['total_amount']
+    saved = saved.aggregate(total_amount=Sum('amount'))['total_amount']
     
     expenses_by_type = BankEvent.objects.values('place_type').annotate(total_amount=models.Sum('amount')).filter(bank_id=curruser)
 
     if incomessum is not None and expensessum is not None:
         balance = incomessum - expensessum
     elif incomessum == None and expensessum is not None:
-        balance = -expensessum
+        balance = - expensessum
     elif expensessum == None:
         balance = incomessum
     else:
@@ -43,11 +43,12 @@ def dashboard(request):
         'incomes': incomes, 
         'balance': balance, 
         'saved': saved, 
-        'invested': invested, 
         'expenses_by_type': expenses_by_type,
     }
 
     return render(request, "index.html", context)
+
+
 
 
 @login_required(login_url='login')
@@ -70,16 +71,17 @@ def add_expense(request):
     return render(request, "new_expense.html", context)
 
 
+
+
 @login_required(login_url='login')
 def incomes(request):
 
     if request.method == "POST":
         form1 = AddIncomeForm(request.POST)
         form2 = AddSavingForm(request.POST)
-        form3 = AddInvestmentForm(request.POST)
         bank_instance = Bank.objects.get(username=request.user.username)
 
-        forms = [form1, form2, form3]
+        forms = [form1, form2]
 
         for form in forms:
             if form.is_valid():
@@ -90,34 +92,50 @@ def incomes(request):
             Income.objects.filter(bank_id=bank_instance).delete()
         elif 'flush_savings' in request.POST:
             Saving.objects.filter(bank_id=bank_instance).delete()
-        elif 'flush_investments' in request.POST:
-            Investment.objects.filter(bank_id=bank_instance).delete()
 
         return redirect('dashboard')
         
     else:
         form1 = AddIncomeForm()
         form2 = AddSavingForm()
-        form3 = AddInvestmentForm()
 
-    context = {'form1': form1, 'form2': form2, 'form3': form3}
+    context = {'form1': form1, 'form2': form2}
     return render(request, "incomes.html", context)
+
+
 
 
 @login_required(login_url='login')
 def settings(request):
 
     if request.method == "POST":
+        api_key_form = AddInvestmentForm(request.POST)
         bank_instance = Bank.objects.get(username=request.user.username)
 
-        Saving.objects.filter(bank_id=bank_instance).delete()
-        Investment.objects.filter(bank_id=bank_instance).delete()
-        Income.objects.filter(bank_id=bank_instance).delete()
-        BankEvent.objects.filter(bank_id=bank_instance).delete()
+        if 'flush_data' in request.POST:
+            Saving.objects.filter(bank_id=bank_instance).delete()
+            Investment.objects.filter(bank_id=bank_instance).delete()
+            Income.objects.filter(bank_id=bank_instance).delete()
+            BankEvent.objects.filter(bank_id=bank_instance).delete()
+        elif 'submit_api_key' in request.POST:
+            if api_key_form.is_valid():
+                api_key = api_key_form.cleaned_data['key']
+                data = investment_data(api_key)
+                print(data)
+
+            else:
+                pass
 
         return redirect('dashboard')
+    
+    else:
+        investmentform = AddInvestmentForm()
 
-    return render(request, "settings.html", {})
+
+    context = {'investmentform': investmentform}
+    return render(request, "settings.html", context)
+
+
 
 
 def datecheck(request):
@@ -148,5 +166,3 @@ def datecheck(request):
             buffer = 0
 
     return 0
-
-    

@@ -12,23 +12,36 @@
 
 {% block main %}
 
-    <form method="POST" action="">
-        <div class="SET_container">
-            <div class="SET_headline">
-                <p class="SET_headline_text">Settings</p>
+    <div class="container">
+        <div class="headline">
+            <p class="headline_text">Settings</p>
+        </div>
+        <div class="trading212_connect">
+            <div class="inside_headline">
+                <p class="headline_text">Connect your portfolio!</p>
             </div>
-            <form method="POST" action="" class="SET_postform1">
+            <form method="POST" action="" class="postform1">
                 {% csrf_token %}
-                <div class="SET_flush">
-                    <input type="submit" name="flush_data" value="Flush Data" class="SET_reset_button">
+                <div class="input_field">
+                    <!-- sem pojde DTL, nieco taketo {{ form2.place }}-->
+                    {{ investmentform.key }}
+                </div>
+                <div class="submit_field">
+                    <input type="submit" name="submit_api_key" value="Connect" class="submit_field_button">
                 </div>
             </form>
-            <div class="SET_logout">
-                <a href="{% url 'logout' %}" class="SET_logout_icon">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                </a>
-            </div>
         </div>
-    </form>
+        <form method="POST" action="" class="postform2">
+            {% csrf_token %}
+            <div class="flush">
+                <input type="submit" name="flush_data" value="Flush Data" class="reset_button">
+            </div>
+        </form>
+        <div class="logout">
+            <a href="{% url 'logout' %}" class="logout_icon">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </a>
+        </div>
+    </div>
 
 {% endblock %}
