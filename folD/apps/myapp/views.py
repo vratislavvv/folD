@@ -108,30 +108,58 @@ def incomes(request):
 @login_required(login_url='login')
 def settings(request):
 
-    if request.method == "POST":
-        api_key_form = AddInvestmentForm(request.POST)
-        bank_instance = Bank.objects.get(username=request.user.username)
+    # Gathering form info
+    investmentform = AddInvestmentForm()
 
+    # Checking if the method is POST and loading up user nickname
+    if request.method == "POST":
+        bank_instance = Bank.objects.get(username=request.user.username)
+        print(bank_instance)
+
+        # There are 2 POST form on this site
+        # Checking for data flushing post form
         if 'flush_data' in request.POST:
             Saving.objects.filter(bank_id=bank_instance).delete()
             Investment.objects.filter(bank_id=bank_instance).delete()
             Income.objects.filter(bank_id=bank_instance).delete()
             BankEvent.objects.filter(bank_id=bank_instance).delete()
+
+        # Checking for investment broker connection
         elif 'submit_api_key' in request.POST:
+            api_key_form = AddInvestmentForm(request.POST)
+
+            # If key form is valid, program loads up data and key
             if api_key_form.is_valid():
-                api_key = api_key_form.cleaned_data['key']
+                api_key = api_key_form.cleaned_data.get('key')
                 data = investment_data(api_key)
-                print(data)
 
-            else:
-                pass
+                # If the key is working
+                if type(data) == dict:
 
-        return redirect('dashboard')
-    
-    else:
-        investmentform = AddInvestmentForm()
+                    # If there was a working key before, program removes it
+                    try:
+                        Investment.objects.get(bank_id=bank_instance)
+                        Investment.objects.filter(bank_id=bank_instance).delete()
 
+                    # If first API key, program passes
+                    except Investment.DoesNotExist:
+                        pass
 
+                    # Saving the key into db
+                    api_key_form.instance.bank_id = bank_instance.id
+                    api_key_form.instance.key = api_key
+                    api_key_form.save()
+
+                    return redirect("dashboard")
+
+                # If the key is not working, application refreshes the page
+                else:
+                    context = {"error_message": "401: Wrong key"}
+                    return redirect("settings")
+
+#                data = investment_data(api_key) {Use this to get data in dashboard view}
+
+    # Passing context form data
     context = {'investmentform': investmentform}
     return render(request, "settings.html", context)
 

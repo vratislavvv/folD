@@ -1,4 +1,4 @@
-import requests
+import requests, json
 
 def investment_data(api_key):
 
@@ -10,8 +10,6 @@ def investment_data(api_key):
         response = requests.get(url, headers=headers)
 
         data = response.json()
-
-        print(data)
         
         return data
     
@@ -22,3 +20,5 @@ def investment_data(api_key):
     except ValueError as err:
         print(f"JSON decoding error occurred: {err}")
         return None
+
+
