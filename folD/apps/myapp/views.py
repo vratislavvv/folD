@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Sum
 from django.db import models
 from datetime import datetime
@@ -13,20 +14,41 @@ buffer = 0
 @login_required(login_url='login')
 def dashboard(request):
 
+    # Checking current date
     datecheck(request)
 
+    # Loading data from database into variables
     curruser = request.user.id
     expenses = BankEvent.objects.filter(bank_id=curruser)
     incomes = Income.objects.filter(bank_id=curruser)
     saved = Saving.objects.filter(bank_id=curruser)
-    invested = Investment.objects.filter(bank_id=curruser)
 
+    # Trading212 API data loading
+    # Trying to access key, later on the account value if the key is correct
+    try:
+        key = Investment.objects.get(bank_id=curruser)
+        key = str(key)
+        invested = investment_data(key)
+
+        # This part is here due to unknow errors which occurred while refreshing the page too fast
+        if 'invested' in invested and 'ppl' in invested:
+            invested = round(invested['invested'], 2) + round(invested['ppl'], 2)
+            round(invested, 2)
+            print(invested)
+        else:
+            invested = 0
+
+    # If accessing the key wasn't successful, invested amount is set to None
+    except ObjectDoesNotExist:
+        invested = None
+
+    # Summing all expenses, expenses by type, incomes, and saved money
     expensessum = expenses.aggregate(total_amount=Sum('amount'))['total_amount']
     incomessum = incomes.aggregate(total_amount=Sum('amount'))['total_amount']
     saved = saved.aggregate(total_amount=Sum('amount'))['total_amount']
-    
     expenses_by_type = BankEvent.objects.values('place_type').annotate(total_amount=models.Sum('amount')).filter(bank_id=curruser)
 
+    # Creating balance variable which shows total balance 
     if incomessum is not None and expensessum is not None:
         balance = incomessum - expensessum
     elif incomessum == None and expensessum is not None:
@@ -36,16 +58,16 @@ def dashboard(request):
     else:
         balance = None
 
-
+    # Passing context form data
     context = {
         'expenses': expenses, 
         'expensessum': expensessum, 
         'incomes': incomes, 
         'balance': balance, 
-        'saved': saved, 
+        'saved': saved,
         'expenses_by_type': expenses_by_type,
+        'invested': invested,
     }
-
     return render(request, "index.html", context)
 
 
@@ -59,7 +81,7 @@ def add_expense(request):
         
         if form.is_valid():
             bank_instance = Bank.objects.get(username=request.user.username)
-            form.instance.bank_id = bank_instance
+            form.instance.bank = bank_instance
             form.instance.time = datetime.now()
             form.save()
             return redirect('dashboard')
@@ -76,22 +98,27 @@ def add_expense(request):
 @login_required(login_url='login')
 def incomes(request):
 
+    bank_instance = Bank.objects.get(username=request.user.username)
+
     if request.method == "POST":
-        form1 = AddIncomeForm(request.POST)
-        form2 = AddSavingForm(request.POST)
-        bank_instance = Bank.objects.get(username=request.user.username)
 
-        forms = [form1, form2]
-
-        for form in forms:
+        if 'add_income' in request.POST:
+            form = AddIncomeForm(request.POST)
             if form.is_valid():
-                form.instance.bank_id = bank_instance
+                form.instance.bank = bank_instance
                 form.save()
-        
-        if 'flush_incomes' in request.POST:
-            Income.objects.filter(bank_id=bank_instance).delete()
+
+        elif 'add_saving' in request.POST:
+            form = AddSavingForm(request.POST)
+            if form.is_valid():
+                form.instance.bank = bank_instance
+                form.save()
+
+        elif 'flush_incomes' in request.POST:
+            Income.objects.filter(bank=bank_instance).delete()
+
         elif 'flush_savings' in request.POST:
-            Saving.objects.filter(bank_id=bank_instance).delete()
+            Saving.objects.filter(bank=bank_instance).delete()
 
         return redirect('dashboard')
         
@@ -99,7 +126,10 @@ def incomes(request):
         form1 = AddIncomeForm()
         form2 = AddSavingForm()
 
-    context = {'form1': form1, 'form2': form2}
+    incomes_data = Income.objects.filter(bank=bank_instance)
+    savings_data = Saving.objects.filter(bank=bank_instance)
+
+    context = {'form1': form1, 'form2': form2, 'incomes': incomes_data, 'savings': savings_data}
     return render(request, "incomes.html", context)
 
 

@@ -78,10 +78,10 @@
                 </div>
                 <div class="DAS_expenses_data">
                     <ul>
-                        {% for item in incomes %}
+                        {% for income in incomes %}
                             <div class="DAS_expenses_data_item">
-                                <li>{{ item.place1 }}</li>
-                                <li>+${{ item.amount1 }}</li>
+                                <li>{{ income.place1 }}</li>
+                                <li>+${{ income.amount1 }}</li>
                             </div>
                         {% endfor %}
                     </ul>

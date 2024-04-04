@@ -1,4 +1,4 @@
-import requests, json
+import requests
 
 def investment_data(api_key):
 
@@ -7,6 +7,7 @@ def investment_data(api_key):
     try:
         headers = {"Authorization": api_key}
 
+        # Tu sa vyhodi error
         response = requests.get(url, headers=headers)
 
         data = response.json()
@@ -22,3 +23,4 @@ def investment_data(api_key):
         return None
 
 
+x = investment_data('21377433ZHxeppWyJGYbTrcFHETniUfRLVAuV')
