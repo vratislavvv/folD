@@ -23,6 +23,7 @@ def dashboard(request):
     incomes = Income.objects.filter(bank_id=curruser)
     saved = Saving.objects.filter(bank_id=curruser)
 
+
     # Trading212 API data loading
     # Trying to access key, later on the account value if the key is correct
     try:
@@ -33,15 +34,14 @@ def dashboard(request):
         # This part is here due to unknow errors which occurred while refreshing the page too fast
         if 'invested' in invested and 'ppl' in invested:
             invested = round(invested['invested'], 2) + round(invested['ppl'], 2)
-            round(invested, 2)
-            print(invested)
+            invested = round(invested, 2)
         else:
             invested = 0
 
     # If accessing the key wasn't successful, invested amount is set to None
     except ObjectDoesNotExist:
         invested = None
-
+    
     # Summing all expenses, expenses by type, incomes, and saved money
     expensessum = expenses.aggregate(total_amount=Sum('amount'))['total_amount']
     incomessum = incomes.aggregate(total_amount=Sum('amount'))['total_amount']
@@ -101,7 +101,7 @@ def incomes(request):
     bank_instance = Bank.objects.get(username=request.user.username)
 
     if request.method == "POST":
-
+        
         if 'add_income' in request.POST:
             form = AddIncomeForm(request.POST)
             if form.is_valid():
@@ -123,13 +123,13 @@ def incomes(request):
         return redirect('dashboard')
         
     else:
-        form1 = AddIncomeForm()
-        form2 = AddSavingForm()
+        form_income = AddIncomeForm()
+        form_saving = AddSavingForm()
 
     incomes_data = Income.objects.filter(bank=bank_instance)
     savings_data = Saving.objects.filter(bank=bank_instance)
 
-    context = {'form1': form1, 'form2': form2, 'incomes': incomes_data, 'savings': savings_data}
+    context = {'form_income': form_income, 'form_saving': form_saving, 'incomes': incomes_data, 'savings': savings_data}
     return render(request, "incomes.html", context)
 
 

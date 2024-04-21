@@ -21,6 +21,3 @@ def investment_data(api_key):
     except ValueError as err:
         print(f"JSON decoding error occurred: {err}")
         return None
-
-
-x = investment_data('21377433ZHxeppWyJGYbTrcFHETniUfRLVAuV')

@@ -6,6 +6,7 @@ from .models_data import PLACE_TYPES, PERIOD
         
 class Bank(models.Model):
     username = models.CharField(max_length=32, unique=True, null=True)
+    balance = models.DecimalField(max_digits=20, decimal_places=2, default=0.0)
 
     def __str__(self):
         return str(self.username)

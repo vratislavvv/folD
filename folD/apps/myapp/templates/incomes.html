@@ -12,54 +12,54 @@
 
 {% block main %}
     
-        <div class="INC_container">
-            <div class="INC_bar">
-                <form method="POST" action="" class="INC_postform1">
-                    {% csrf_token %}
-                    <div class="INC_form">
-                        <div class="INC_form_headline">
-                            <p class="INC_form_headline_text">Add income</p>
-                        </div>
-                        <div class="INC_form_main">
-                            <div class="INC_form_forms">
-                                {{ form1.place }}
-                                {{ form1.amount }}
-                                {{ form1.wageday }}
-                            </div>
-                            <input type="submit" value="Add" class="INC_form_submitbutton">                            
-                        </div>
+<div class="INC_container">
+    <div class="INC_bar">
+        <form method="POST" action="" class="INC_postform1">
+            {% csrf_token %}
+            <div class="INC_form">
+                <div class="INC_form_headline">
+                    <p class="INC_form_headline_text">Add income</p>
+                </div>
+                <div class="INC_form_main">
+                    <div class="INC_form_forms">
+                        {{ form_income.place }}
+                        {{ form_income.amount }}
+                        {{ form_income.wageday }}
                     </div>
-                </form>
-                <form method="POST" action="" class="INC_postform2">
-                    {% csrf_token %}
-                    <div class="INC_reset">
-                        <input type="submit" name="flush_incomes" value="Flush Incomes" class="INC_reset_button">
-                    </div>
-                </form>
+                    <input type="submit" name="add_income" value="Add" class="INC_form_submitbutton">                            
+                </div>
             </div>
-            <div class="INC_bar">
-                <form method="POST" action="" class="INC_postform1">
-                    {% csrf_token %}
-                    <div class="INC_form">
-                        <div class="INC_form_headline">
-                            <p class="INC_form_headline_text">Add savings</p>
-                        </div>
-                        <div class="INC_form_main">
-                            <div class="INC_form_forms">
-                                {{ form2.place }}
-                                {{ form2.amount }}
-                            </div>
-                            <input type="submit" value="Add" class="INC_form_submitbutton">                            
-                        </div>
-                    </div>
-                </form>
-                <form method="POST" action="" class="INC_postform2">
-                    {% csrf_token %}
-                    <div class="INC_reset">
-                        <input type="submit" name="flush_savings" value="Flush Savings" class="INC_reset_button">
-                    </div>
-                </form>
+        </form>
+        <form method="POST" action="" class="INC_postform2">
+            {% csrf_token %}
+            <div class="INC_reset">
+                <input type="submit" name="flush_incomes" value="Flush Incomes" class="INC_reset_button">
             </div>
-        </div>
+        </form>
+    </div>
+    <div class="INC_bar">
+        <form method="POST" action="" class="INC_postform1">
+            {% csrf_token %}
+            <div class="INC_form">
+                <div class="INC_form_headline">
+                    <p class="INC_form_headline_text">Add savings</p>
+                </div>
+                <div class="INC_form_main">
+                    <div class="INC_form_forms">
+                        {{ form_saving.place }}
+                        {{ form_saving.amount }}
+                    </div>
+                    <input type="submit" name="add_saving" value="Add" class="INC_form_submitbutton">                            
+                </div>
+            </div>
+        </form>
+        <form method="POST" action="" class="INC_postform2">
+            {% csrf_token %}
+            <div class="INC_reset">
+                <input type="submit" name="flush_savings" value="Flush Savings" class="INC_reset_button">
+            </div>
+        </form>
+    </div>
+</div>
 
 {% endblock %}
