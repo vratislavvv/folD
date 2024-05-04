@@ -3,8 +3,10 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Sum
 from django.db import models
+from dateutil.relativedelta import relativedelta
+from calendar import month_name
+from collections import defaultdict
 from datetime import datetime
-
 from .models import Bank, BankEvent, Income, Saving, Investment
 from .forms import BankEventForm, AddIncomeForm, AddSavingForm, AddInvestmentForm
 from .trading212.trading212api import investment_data
@@ -16,6 +18,7 @@ def dashboard(request):
 
     # Checking current date
     datecheck(request)
+    months = get_month_options()
 
     # Loading data from database into variables
     curruser = request.user.id
@@ -67,6 +70,7 @@ def dashboard(request):
         'saved': saved,
         'expenses_by_type': expenses_by_type,
         'invested': invested,
+        'months': months,
     }
     return render(request, "index.html", context)
 
@@ -224,3 +228,29 @@ def datecheck(request):
             buffer = 0
 
     return 0
+
+
+
+
+#AI
+def get_month_options():
+    # Get the current month and year
+    current_month = datetime.now().strftime('%B %Y')
+    current_year = datetime.now().year
+    months_with_expenses = defaultdict(int)
+
+    # Fetch the months with expenses from the database
+    expenses = BankEvent.objects.filter(time__year=current_year)
+    for expense in expenses:
+        month_year = expense.time.strftime('%B %Y')
+        months_with_expenses[month_year] += 1
+
+    # Generate the list of months
+    month_options = [current_month]
+    for i in range(1, 13):
+        month_year = (datetime(current_year, i, 1)).strftime('%B %Y')
+        if month_year not in month_options and months_with_expenses[month_year] > 0:
+            month_options.append(month_year)
+
+    print(month_options)
+    return month_options

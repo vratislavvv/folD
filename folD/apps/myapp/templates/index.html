@@ -15,7 +15,13 @@
     <div class="DAS_container">
         <div class="DAS_status">
             <div class="DAS_month">
-                
+                <select id="month-dropdown" class="DAS_input">
+                    {% for month in months %}
+                        <option value="{{ month }}" {% if month == current_month %} selected {% endif %}>
+                            {{ month }}
+                        </option>
+                    {% endfor %}
+                </select>
             </div>
             <div class="DAS_graph">  
                 <canvas id="expenseChart" style="width: 100%; height: auto;"></canvas>
@@ -133,6 +139,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'js/dashboard.js' %}"></script>
 
     <script>
         var context = document.getElementById('expenseChart').getContext('2d');
@@ -184,5 +191,5 @@
             options: options,
         });
     </script>
-
+    
 {% endblock %}

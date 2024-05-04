@@ -43,8 +43,27 @@
     gap: 2vh;
 }
 
+.DAS_month {
+    display: flex;
+    height: 10vh;
+    background-color: #505050;
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    align-items: center;
+}
+
+.DAS_input {
+    width: 100%;
+    height: 40px;
+    background-color: #b8b8b8;
+    border-radius: 100px;
+    padding: 0 10px;
+    border: #b8b8b8;
+}
+
 .DAS_graph {
-    height: 58vh;
+    height: 53vh;
     background-color: #505050;
     padding: 30px;
     border-radius: 30px;
@@ -54,7 +73,7 @@
 .DAS_stage {
     display: flex;
     align-items: center;
-    height: 17vh;
+    height: 10vh;
     background-color: #505050;
     padding: 30px;
     border-radius: 30px;
