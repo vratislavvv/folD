@@ -3,10 +3,11 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Sum
 from django.db import models
+from django.http import JsonResponse
 from dateutil.relativedelta import relativedelta
+from datetime import datetime
 from calendar import month_name
 from collections import defaultdict
-from datetime import datetime
 from .models import Bank, BankEvent, Income, Saving, Investment
 from .forms import BankEventForm, AddIncomeForm, AddSavingForm, AddInvestmentForm
 from .trading212.trading212api import investment_data
@@ -18,7 +19,7 @@ def dashboard(request):
 
     # Checking current date
     datecheck(request)
-    months = get_month_options()
+    months = get_month_options(request)
 
     # Loading data from database into variables
     curruser = request.user.id
@@ -71,6 +72,7 @@ def dashboard(request):
         'expenses_by_type': expenses_by_type,
         'invested': invested,
         'months': months,
+#        'sorted_expenses': sorted_expenses,
     }
     return render(request, "index.html", context)
 
@@ -233,14 +235,15 @@ def datecheck(request):
 
 
 #AI
-def get_month_options():
+def get_month_options(request):
     # Get the current month and year
     current_month = datetime.now().strftime('%B %Y')
     current_year = datetime.now().year
     months_with_expenses = defaultdict(int)
+    curruser = request.user.id
 
-    # Fetch the months with expenses from the database
-    expenses = BankEvent.objects.filter(time__year=current_year)
+    # Fetch the months with expenses for the current user from the database
+    expenses = BankEvent.objects.filter(time__year=current_year, bank_id=curruser)
     for expense in expenses:
         month_year = expense.time.strftime('%B %Y')
         months_with_expenses[month_year] += 1
@@ -252,5 +255,26 @@ def get_month_options():
         if month_year not in month_options and months_with_expenses[month_year] > 0:
             month_options.append(month_year)
 
-    print(month_options)
     return month_options
+
+
+
+
+def fetch_data_view(request):
+    selected_month_str = request.GET.get('month')
+    user_id = request.user.id
+
+    # Parse the selected month string into a datetime object
+    selected_month_dt = datetime.strptime(selected_month_str, '%B %Y')
+
+    # Extract the month part as an integer
+    selected_month = selected_month_dt.month
+
+    # Fetch data based on the selected month and user
+    expenses = BankEvent.objects.filter(time__month=selected_month, bank_id=user_id)
+
+    # Serialize the data into JSON format
+    expenses_data = [{'place': expense.place, 'amount': expense.amount} for expense in expenses]
+
+    # Return the data as a JSON response
+    return JsonResponse({'expenses': expenses_data})

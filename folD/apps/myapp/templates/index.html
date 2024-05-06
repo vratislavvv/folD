@@ -61,16 +61,11 @@
                     <p class="DAS_header_text">Price</p>
                 </div>
             </div>
-            <div class="DAS_expenses_data">
+            <div class="DAS_expenses_data" id="expenses-container">
                 <ul>
-                    {% for item in expenses %}
-                        <div class="DAS_expenses_data_item">
-                            <li>{{ item.place }}</li>
-                            <li>-${{ item.amount }}</li>
-                        </div>
-                    {% endfor %}
+                
                 </ul>
-            </div> 
+            </div>
         </div>
         <div class="DAS_ISI">
             <div class="DAS_incomes">
