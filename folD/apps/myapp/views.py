@@ -1,3 +1,4 @@
+import calendar
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
@@ -207,8 +208,8 @@ def datecheck(request):
 
     bank_instance = Bank.objects.get(username=request.user.username)
     wageday = Income.objects.filter(bank_id=bank_instance).first()
-    time = datetime.now()
-    day = int(time.day)
+    current_time = datetime.now()
+    day = int(current_time.day)
 
     if wageday is not None:
         wageday = int(wageday.wageday)
@@ -264,17 +265,52 @@ def fetch_data_view(request):
     selected_month_str = request.GET.get('month')
     user_id = request.user.id
 
-    # Parse the selected month string into a datetime object
-    selected_month_dt = datetime.strptime(selected_month_str, '%B %Y')
+    try:
+        # Convert the month string to English equivalent
+        english_month = translate_to_english(selected_month_str)
+        # Parse the selected month string into a datetime object
+        selected_month_dt = datetime.strptime(english_month, '%B %Y')
+    except ValueError as e:
+        # If parsing fails, handle the error gracefully and return a JSON response with an error message
+        return JsonResponse({'error': str(e)}, status=400)
 
     # Extract the month part as an integer
     selected_month = selected_month_dt.month
 
-    # Fetch data based on the selected month and user
+    # Fetch expenses data based on the selected month and user
     expenses = BankEvent.objects.filter(time__month=selected_month, bank_id=user_id)
 
-    # Serialize the data into JSON format
+    # Serialize the expenses data into JSON format
     expenses_data = [{'place': expense.place, 'amount': expense.amount} for expense in expenses]
 
-    # Return the data as a JSON response
-    return JsonResponse({'expenses': expenses_data})
+    # Calculate total income for the user
+    total_income = Income.objects.filter(bank_id=user_id).aggregate(total=Sum('amount'))['total'] or 0
+
+    # Return the combined expenses, total income, and selected month as a JSON response
+    return JsonResponse({'expenses': expenses_data, 'total_income': total_income, 'selected_month': selected_month})
+
+
+
+
+def translate_to_english(month_str):
+    # Mapping of Slovak month names to English month names
+    translations = {
+        'január': 'January',
+        'február': 'February',
+        'marec': 'March',
+        'apríl': 'April',
+        'máj': 'May',
+        'jún': 'June',
+        'júl': 'July',
+        'august': 'August',
+        'september': 'September',
+        'október': 'October',
+        'november': 'November',
+        'december': 'December'
+    }
+    # Split the input string by space and get the last part (year)
+    parts = month_str.split()
+    year = parts[-1]
+    # Join the translated month name and the year
+    translated_month = translations.get(parts[0].lower(), '')  # Use lower case for case-insensitive matching
+    return f"{translated_month} {year}"

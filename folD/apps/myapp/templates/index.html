@@ -29,22 +29,12 @@
             <div class="DAS_stage">
                 <ul class="DAS_ul">
                     <div class="DAS_stage_part">
-                        {% if expensessum %}
-                            <li>Expenses: </li>
-                            <li>${{ expensessum }}</li>
-                        {% else %}
-                            <li>Expenses: </li>
-                            <li>None</li>
-                        {% endif %}
-                    </div> 
+                        <li>Expenses:</li>
+                        <li id="expenses-total">Loading...</li>
+                    </div>
                     <div class="DAS_stage_part">
-                        {% if balance %}
-                            <li>Balance: </li>
-                            <li> ${{ balance }}</li>
-                        {% else %}
-                            <li>Balance: </li>
-                            <li>None</li>
-                        {% endif %}
+                        <li>Balance:</li>
+                        <li id="incomes-total">Loading...</li>
                     </div> 
                 </ul>
             </div>
